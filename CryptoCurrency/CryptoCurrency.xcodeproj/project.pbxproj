@@ -13,7 +13,6 @@
 		5E0E7C742AB00DAF00BB6C5A /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0E7C732AB00DAF00BB6C5A /* ExchangeViewController.swift */; };
 		5E0E7C762AB00DC300BB6C5A /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0E7C752AB00DC300BB6C5A /* NewsViewController.swift */; };
 		5E7EF7E22AAF22C600F8386A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7EF7E12AAF22C600F8386A /* AppDelegate.swift */; };
-		5E7EF7E42AAF22C600F8386A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7EF7E32AAF22C600F8386A /* SceneDelegate.swift */; };
 		5E7EF7E62AAF22C600F8386A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7EF7E52AAF22C600F8386A /* HomeViewController.swift */; };
 		5E7EF7E92AAF22C600F8386A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E7EF7E72AAF22C600F8386A /* Main.storyboard */; };
 		5E7EF7EC2AAF22C600F8386A /* CryptoCurrency.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5E7EF7EA2AAF22C600F8386A /* CryptoCurrency.xcdatamodeld */; };
@@ -29,7 +28,6 @@
 		5E0E7C752AB00DC300BB6C5A /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		5E7EF7DE2AAF22C600F8386A /* CryptoCurrency.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoCurrency.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E7EF7E12AAF22C600F8386A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5E7EF7E32AAF22C600F8386A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5E7EF7E52AAF22C600F8386A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5E7EF7E82AAF22C600F8386A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5E7EF7EB2AAF22C600F8386A /* CryptoCurrency.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CryptoCurrency.xcdatamodel; sourceTree = "<group>"; };
@@ -100,7 +98,6 @@
 				5E0E7C6B2AB00C1700BB6C5A /* View */,
 				5E0E7C6A2AB00C1100BB6C5A /* Model */,
 				5E7EF7E12AAF22C600F8386A /* AppDelegate.swift */,
-				5E7EF7E32AAF22C600F8386A /* SceneDelegate.swift */,
 				5E7EF7ED2AAF22C900F8386A /* Assets.xcassets */,
 				5E7EF7EF2AAF22C900F8386A /* LaunchScreen.storyboard */,
 				5E7EF7F22AAF22C900F8386A /* Info.plist */,
@@ -205,7 +202,6 @@
 				5E7EF7E62AAF22C600F8386A /* HomeViewController.swift in Sources */,
 				5E0E7C742AB00DAF00BB6C5A /* ExchangeViewController.swift in Sources */,
 				5E7EF7E22AAF22C600F8386A /* AppDelegate.swift in Sources */,
-				5E7EF7E42AAF22C600F8386A /* SceneDelegate.swift in Sources */,
 				5E0E7C6E2AB00D2D00BB6C5A /* Coin.swift in Sources */,
 				5E0E7C702AB00D7D00BB6C5A /* FavouriteViewController.swift in Sources */,
 				5E0E7C762AB00DC300BB6C5A /* NewsViewController.swift in Sources */,
