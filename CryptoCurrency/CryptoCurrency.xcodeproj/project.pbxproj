@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5E0E7C6E2AB00D2D00BB6C5A /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0E7C6D2AB00D2D00BB6C5A /* Coin.swift */; };
+		5E0E7C6E2AB00D2D00BB6C5A /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0E7C6D2AB00D2D00BB6C5A /* Response.swift */; };
 		5E0E7C702AB00D7D00BB6C5A /* FavouriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0E7C6F2AB00D7D00BB6C5A /* FavouriteViewController.swift */; };
 		5E0E7C722AB00D9900BB6C5A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0E7C712AB00D9900BB6C5A /* DetailViewController.swift */; };
 		5E0E7C742AB00DAF00BB6C5A /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0E7C732AB00DAF00BB6C5A /* ExchangeViewController.swift */; };
@@ -18,10 +18,14 @@
 		5E7EF7EC2AAF22C600F8386A /* CryptoCurrency.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5E7EF7EA2AAF22C600F8386A /* CryptoCurrency.xcdatamodeld */; };
 		5E7EF7EE2AAF22C900F8386A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E7EF7ED2AAF22C900F8386A /* Assets.xcassets */; };
 		5E7EF7F12AAF22C900F8386A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E7EF7EF2AAF22C900F8386A /* LaunchScreen.storyboard */; };
+		5ED711172AB05E01001F936F /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED711162AB05E01001F936F /* Endpoint.swift */; };
+		5ED7111A2AB05F97001F936F /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED711192AB05F97001F936F /* APIManager.swift */; };
+		5ED7111C2AB064CE001F936F /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED7111B2AB064CE001F936F /* Coin.swift */; };
+		5EE049382AB0774300810282 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE049372AB0774300810282 /* Key.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5E0E7C6D2AB00D2D00BB6C5A /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
+		5E0E7C6D2AB00D2D00BB6C5A /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		5E0E7C6F2AB00D7D00BB6C5A /* FavouriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteViewController.swift; sourceTree = "<group>"; };
 		5E0E7C712AB00D9900BB6C5A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5E0E7C732AB00DAF00BB6C5A /* ExchangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewController.swift; sourceTree = "<group>"; };
@@ -34,6 +38,10 @@
 		5E7EF7ED2AAF22C900F8386A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5E7EF7F02AAF22C900F8386A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E7EF7F22AAF22C900F8386A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5ED711162AB05E01001F936F /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		5ED711192AB05F97001F936F /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		5ED7111B2AB064CE001F936F /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
+		5EE049372AB0774300810282 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +58,10 @@
 		5E0E7C6A2AB00C1100BB6C5A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5E0E7C6D2AB00D2D00BB6C5A /* Coin.swift */,
+				5E0E7C6D2AB00D2D00BB6C5A /* Response.swift */,
+				5ED711162AB05E01001F936F /* Endpoint.swift */,
+				5ED7111B2AB064CE001F936F /* Coin.swift */,
+				5EE049372AB0774300810282 /* Key.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -94,6 +105,7 @@
 		5E7EF7E02AAF22C600F8386A /* CryptoCurrency */ = {
 			isa = PBXGroup;
 			children = (
+				5ED711182AB05F7C001F936F /* API */,
 				5E0E7C6C2AB00C1B00BB6C5A /* Controller */,
 				5E0E7C6B2AB00C1700BB6C5A /* View */,
 				5E0E7C6A2AB00C1100BB6C5A /* Model */,
@@ -104,6 +116,14 @@
 				5E7EF7EA2AAF22C600F8386A /* CryptoCurrency.xcdatamodeld */,
 			);
 			path = CryptoCurrency;
+			sourceTree = "<group>";
+		};
+		5ED711182AB05F7C001F936F /* API */ = {
+			isa = PBXGroup;
+			children = (
+				5ED711192AB05F97001F936F /* APIManager.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,12 +220,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E7EF7E62AAF22C600F8386A /* HomeViewController.swift in Sources */,
+				5ED711172AB05E01001F936F /* Endpoint.swift in Sources */,
+				5ED7111A2AB05F97001F936F /* APIManager.swift in Sources */,
 				5E0E7C742AB00DAF00BB6C5A /* ExchangeViewController.swift in Sources */,
 				5E7EF7E22AAF22C600F8386A /* AppDelegate.swift in Sources */,
-				5E0E7C6E2AB00D2D00BB6C5A /* Coin.swift in Sources */,
+				5EE049382AB0774300810282 /* Key.swift in Sources */,
+				5E0E7C6E2AB00D2D00BB6C5A /* Response.swift in Sources */,
 				5E0E7C702AB00D7D00BB6C5A /* FavouriteViewController.swift in Sources */,
 				5E0E7C762AB00DC300BB6C5A /* NewsViewController.swift in Sources */,
 				5E7EF7EC2AAF22C600F8386A /* CryptoCurrency.xcdatamodeld in Sources */,
+				5ED7111C2AB064CE001F936F /* Coin.swift in Sources */,
 				5E0E7C722AB00D9900BB6C5A /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

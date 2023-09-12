@@ -7,5 +7,11 @@
 
 import Foundation
 
-struct Coin {
+struct Coin: Codable {
+    var symbol: String
+    var name: String
+    var color: String?
+    var iconUrl: String
+    var price: String
+    var change: String
 }
