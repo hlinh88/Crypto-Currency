@@ -12,6 +12,14 @@
 		5E0E7C722AB00D9900BB6C5A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0E7C712AB00D9900BB6C5A /* DetailViewController.swift */; };
 		5E0E7C742AB00DAF00BB6C5A /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0E7C732AB00DAF00BB6C5A /* ExchangeViewController.swift */; };
 		5E0E7C762AB00DC300BB6C5A /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0E7C752AB00DC300BB6C5A /* NewsViewController.swift */; };
+		5E616CB72AB1A14600DED86E /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E616CB52AB1A14600DED86E /* TabBarController.swift */; };
+		5E616CB82AB1A14600DED86E /* TabBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E616CB62AB1A14600DED86E /* TabBarController.xib */; };
+		5E616CC32AB1B91900DED86E /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E616CC22AB1B91900DED86E /* ColorExtension.swift */; };
+		5E616CC52AB1C42800DED86E /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E616CC42AB1C42800DED86E /* HomeViewController.xib */; };
+		5E616CC72AB1CB1B00DED86E /* SearchBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E616CC62AB1CB1B00DED86E /* SearchBarExtension.swift */; };
+		5E616CC92AB1CC6800DED86E /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E616CC82AB1CC6800DED86E /* ButtonExtension.swift */; };
+		5E616CD52AB1CF5D00DED86E /* StockViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E616CD32AB1CF5D00DED86E /* StockViewCell.swift */; };
+		5E616CD62AB1CF5D00DED86E /* StockViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E616CD42AB1CF5D00DED86E /* StockViewCell.xib */; };
 		5E7EF7E22AAF22C600F8386A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7EF7E12AAF22C600F8386A /* AppDelegate.swift */; };
 		5E7EF7E62AAF22C600F8386A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7EF7E52AAF22C600F8386A /* HomeViewController.swift */; };
 		5E7EF7E92AAF22C600F8386A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E7EF7E72AAF22C600F8386A /* Main.storyboard */; };
@@ -30,6 +38,14 @@
 		5E0E7C712AB00D9900BB6C5A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5E0E7C732AB00DAF00BB6C5A /* ExchangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewController.swift; sourceTree = "<group>"; };
 		5E0E7C752AB00DC300BB6C5A /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		5E616CB52AB1A14600DED86E /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		5E616CB62AB1A14600DED86E /* TabBarController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarController.xib; sourceTree = "<group>"; };
+		5E616CC22AB1B91900DED86E /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		5E616CC42AB1C42800DED86E /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		5E616CC62AB1CB1B00DED86E /* SearchBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarExtension.swift; sourceTree = "<group>"; };
+		5E616CC82AB1CC6800DED86E /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
+		5E616CD32AB1CF5D00DED86E /* StockViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewCell.swift; sourceTree = "<group>"; };
+		5E616CD42AB1CF5D00DED86E /* StockViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StockViewCell.xib; sourceTree = "<group>"; };
 		5E7EF7DE2AAF22C600F8386A /* CryptoCurrency.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoCurrency.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E7EF7E12AAF22C600F8386A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E7EF7E52AAF22C600F8386A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -66,24 +82,86 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		5E0E7C6B2AB00C1700BB6C5A /* View */ = {
-			isa = PBXGroup;
-			children = (
-				5E7EF7E72AAF22C600F8386A /* Main.storyboard */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		5E0E7C6C2AB00C1B00BB6C5A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5E7EF7E52AAF22C600F8386A /* HomeViewController.swift */,
-				5E0E7C6F2AB00D7D00BB6C5A /* FavouriteViewController.swift */,
-				5E0E7C712AB00D9900BB6C5A /* DetailViewController.swift */,
-				5E0E7C732AB00DAF00BB6C5A /* ExchangeViewController.swift */,
-				5E0E7C752AB00DC300BB6C5A /* NewsViewController.swift */,
+				5E616CCD2AB1CD5000DED86E /* Detail */,
+				5E616CCC2AB1CD4000DED86E /* News */,
+				5E616CCB2AB1CD3700DED86E /* Exchange */,
+				5E616CCA2AB1CD2D00DED86E /* Favourite */,
+				5E616CBA2AB1A9B600DED86E /* Home */,
+				5E616CB92AB1A8AE00DED86E /* TabBar */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		5E616CB92AB1A8AE00DED86E /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				5E616CB52AB1A14600DED86E /* TabBarController.swift */,
+				5E616CB62AB1A14600DED86E /* TabBarController.xib */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		5E616CBA2AB1A9B600DED86E /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				5E7EF7E52AAF22C600F8386A /* HomeViewController.swift */,
+				5E616CC42AB1C42800DED86E /* HomeViewController.xib */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		5E616CC12AB1B8E600DED86E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				5E616CC22AB1B91900DED86E /* ColorExtension.swift */,
+				5E616CC62AB1CB1B00DED86E /* SearchBarExtension.swift */,
+				5E616CC82AB1CC6800DED86E /* ButtonExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		5E616CCA2AB1CD2D00DED86E /* Favourite */ = {
+			isa = PBXGroup;
+			children = (
+				5E0E7C6F2AB00D7D00BB6C5A /* FavouriteViewController.swift */,
+			);
+			path = Favourite;
+			sourceTree = "<group>";
+		};
+		5E616CCB2AB1CD3700DED86E /* Exchange */ = {
+			isa = PBXGroup;
+			children = (
+				5E0E7C732AB00DAF00BB6C5A /* ExchangeViewController.swift */,
+			);
+			path = Exchange;
+			sourceTree = "<group>";
+		};
+		5E616CCC2AB1CD4000DED86E /* News */ = {
+			isa = PBXGroup;
+			children = (
+				5E0E7C752AB00DC300BB6C5A /* NewsViewController.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		5E616CCD2AB1CD5000DED86E /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				5E0E7C712AB00D9900BB6C5A /* DetailViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		5E616CCE2AB1CD5F00DED86E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5E616CD32AB1CF5D00DED86E /* StockViewCell.swift */,
+				5E616CD42AB1CF5D00DED86E /* StockViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		5E7EF7D52AAF22C600F8386A = {
@@ -105,12 +183,14 @@
 		5E7EF7E02AAF22C600F8386A /* CryptoCurrency */ = {
 			isa = PBXGroup;
 			children = (
+				5E616CCE2AB1CD5F00DED86E /* Cell */,
+				5E616CC12AB1B8E600DED86E /* Extension */,
 				5ED711182AB05F7C001F936F /* API */,
 				5E0E7C6C2AB00C1B00BB6C5A /* Controller */,
-				5E0E7C6B2AB00C1700BB6C5A /* View */,
 				5E0E7C6A2AB00C1100BB6C5A /* Model */,
 				5E7EF7E12AAF22C600F8386A /* AppDelegate.swift */,
 				5E7EF7ED2AAF22C900F8386A /* Assets.xcassets */,
+				5E7EF7E72AAF22C600F8386A /* Main.storyboard */,
 				5E7EF7EF2AAF22C900F8386A /* LaunchScreen.storyboard */,
 				5E7EF7F22AAF22C900F8386A /* Info.plist */,
 				5E7EF7EA2AAF22C600F8386A /* CryptoCurrency.xcdatamodeld */,
@@ -186,6 +266,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E7EF7F12AAF22C900F8386A /* LaunchScreen.storyboard in Resources */,
+				5E616CB82AB1A14600DED86E /* TabBarController.xib in Resources */,
+				5E616CC52AB1C42800DED86E /* HomeViewController.xib in Resources */,
+				5E616CD62AB1CF5D00DED86E /* StockViewCell.xib in Resources */,
 				5E7EF7EE2AAF22C900F8386A /* Assets.xcassets in Resources */,
 				5E7EF7E92AAF22C600F8386A /* Main.storyboard in Resources */,
 			);
@@ -220,14 +303,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E7EF7E62AAF22C600F8386A /* HomeViewController.swift in Sources */,
+				5E616CB72AB1A14600DED86E /* TabBarController.swift in Sources */,
 				5ED711172AB05E01001F936F /* Endpoint.swift in Sources */,
 				5ED7111A2AB05F97001F936F /* APIManager.swift in Sources */,
 				5E0E7C742AB00DAF00BB6C5A /* ExchangeViewController.swift in Sources */,
+				5E616CC32AB1B91900DED86E /* ColorExtension.swift in Sources */,
 				5E7EF7E22AAF22C600F8386A /* AppDelegate.swift in Sources */,
 				5EE049382AB0774300810282 /* Key.swift in Sources */,
 				5E0E7C6E2AB00D2D00BB6C5A /* Response.swift in Sources */,
+				5E616CD52AB1CF5D00DED86E /* StockViewCell.swift in Sources */,
+				5E616CC92AB1CC6800DED86E /* ButtonExtension.swift in Sources */,
 				5E0E7C702AB00D7D00BB6C5A /* FavouriteViewController.swift in Sources */,
 				5E0E7C762AB00DC300BB6C5A /* NewsViewController.swift in Sources */,
+				5E616CC72AB1CB1B00DED86E /* SearchBarExtension.swift in Sources */,
 				5E7EF7EC2AAF22C600F8386A /* CryptoCurrency.xcdatamodeld in Sources */,
 				5ED7111C2AB064CE001F936F /* Coin.swift in Sources */,
 				5E0E7C722AB00D9900BB6C5A /* DetailViewController.swift in Sources */,
