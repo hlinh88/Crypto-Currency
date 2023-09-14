@@ -34,6 +34,9 @@
 		5EF03CB92AB2F2B500A7CF72 /* FavouriteViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF03CB72AB2F2B500A7CF72 /* FavouriteViewCell.swift */; };
 		5EF03CBA2AB2F2B500A7CF72 /* FavouriteViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EF03CB82AB2F2B500A7CF72 /* FavouriteViewCell.xib */; };
 		5EF03CBC2AB2F93000A7CF72 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF03CBB2AB2F93000A7CF72 /* ViewExtension.swift */; };
+		5EF03CBE2AB302E500A7CF72 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EF03CBD2AB302E500A7CF72 /* DetailViewController.xib */; };
+		5EF03CC02AB33AD300A7CF72 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF03CBF2AB33AD300A7CF72 /* ViewControllerExtension.swift */; };
+		5EF03CC22AB363D800A7CF72 /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF03CC12AB363D800A7CF72 /* ViewManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +69,9 @@
 		5EF03CB72AB2F2B500A7CF72 /* FavouriteViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteViewCell.swift; sourceTree = "<group>"; };
 		5EF03CB82AB2F2B500A7CF72 /* FavouriteViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavouriteViewCell.xib; sourceTree = "<group>"; };
 		5EF03CBB2AB2F93000A7CF72 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		5EF03CBD2AB302E500A7CF72 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		5EF03CBF2AB33AD300A7CF72 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
+		5EF03CC12AB363D800A7CF72 /* ViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +134,7 @@
 				5E616CC62AB1CB1B00DED86E /* SearchBarExtension.swift */,
 				5E616CC82AB1CC6800DED86E /* ButtonExtension.swift */,
 				5EF03CBB2AB2F93000A7CF72 /* ViewExtension.swift */,
+				5EF03CBF2AB33AD300A7CF72 /* ViewControllerExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -161,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				5E0E7C712AB00D9900BB6C5A /* DetailViewController.swift */,
+				5EF03CBD2AB302E500A7CF72 /* DetailViewController.xib */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -212,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				5ED711192AB05F97001F936F /* APIManager.swift */,
+				5EF03CC12AB363D800A7CF72 /* ViewManager.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -297,6 +306,7 @@
 				5E616CB82AB1A14600DED86E /* TabBarController.xib in Resources */,
 				5E616CC52AB1C42800DED86E /* HomeViewController.xib in Resources */,
 				5EF03CB42AB2F14300A7CF72 /* FavouriteViewController.xib in Resources */,
+				5EF03CBE2AB302E500A7CF72 /* DetailViewController.xib in Resources */,
 				5E616CD62AB1CF5D00DED86E /* StockViewCell.xib in Resources */,
 				5E7EF7EE2AAF22C900F8386A /* Assets.xcassets in Resources */,
 				5EF03CBA2AB2F2B500A7CF72 /* FavouriteViewCell.xib in Resources */,
@@ -340,9 +350,11 @@
 				5E0E7C742AB00DAF00BB6C5A /* ExchangeViewController.swift in Sources */,
 				5E616CC32AB1B91900DED86E /* ColorExtension.swift in Sources */,
 				5E7EF7E22AAF22C600F8386A /* AppDelegate.swift in Sources */,
+				5EF03CC02AB33AD300A7CF72 /* ViewControllerExtension.swift in Sources */,
 				5EE049382AB0774300810282 /* Key.swift in Sources */,
 				5E0E7C6E2AB00D2D00BB6C5A /* Response.swift in Sources */,
 				5E616CD52AB1CF5D00DED86E /* StockViewCell.swift in Sources */,
+				5EF03CC22AB363D800A7CF72 /* ViewManager.swift in Sources */,
 				5E616CC92AB1CC6800DED86E /* ButtonExtension.swift in Sources */,
 				5E0E7C702AB00D7D00BB6C5A /* FavouriteViewController.swift in Sources */,
 				5E0E7C762AB00DC300BB6C5A /* NewsViewController.swift in Sources */,
