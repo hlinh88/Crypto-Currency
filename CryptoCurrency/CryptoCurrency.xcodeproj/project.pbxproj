@@ -30,6 +30,10 @@
 		5ED7111A2AB05F97001F936F /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED711192AB05F97001F936F /* APIManager.swift */; };
 		5ED7111C2AB064CE001F936F /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED7111B2AB064CE001F936F /* Coin.swift */; };
 		5EE049382AB0774300810282 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE049372AB0774300810282 /* Key.swift */; };
+		5EF03CB42AB2F14300A7CF72 /* FavouriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EF03CB32AB2F14300A7CF72 /* FavouriteViewController.xib */; };
+		5EF03CB92AB2F2B500A7CF72 /* FavouriteViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF03CB72AB2F2B500A7CF72 /* FavouriteViewCell.swift */; };
+		5EF03CBA2AB2F2B500A7CF72 /* FavouriteViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EF03CB82AB2F2B500A7CF72 /* FavouriteViewCell.xib */; };
+		5EF03CBC2AB2F93000A7CF72 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF03CBB2AB2F93000A7CF72 /* ViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +62,10 @@
 		5ED711192AB05F97001F936F /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		5ED7111B2AB064CE001F936F /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		5EE049372AB0774300810282 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
+		5EF03CB32AB2F14300A7CF72 /* FavouriteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavouriteViewController.xib; sourceTree = "<group>"; };
+		5EF03CB72AB2F2B500A7CF72 /* FavouriteViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteViewCell.swift; sourceTree = "<group>"; };
+		5EF03CB82AB2F2B500A7CF72 /* FavouriteViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavouriteViewCell.xib; sourceTree = "<group>"; };
+		5EF03CBB2AB2F93000A7CF72 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +127,7 @@
 				5E616CC22AB1B91900DED86E /* ColorExtension.swift */,
 				5E616CC62AB1CB1B00DED86E /* SearchBarExtension.swift */,
 				5E616CC82AB1CC6800DED86E /* ButtonExtension.swift */,
+				5EF03CBB2AB2F93000A7CF72 /* ViewExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -127,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				5E0E7C6F2AB00D7D00BB6C5A /* FavouriteViewController.swift */,
+				5EF03CB32AB2F14300A7CF72 /* FavouriteViewController.xib */,
 			);
 			path = Favourite;
 			sourceTree = "<group>";
@@ -158,8 +168,8 @@
 		5E616CCE2AB1CD5F00DED86E /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				5E616CD32AB1CF5D00DED86E /* StockViewCell.swift */,
-				5E616CD42AB1CF5D00DED86E /* StockViewCell.xib */,
+				5EF03CB62AB2F29B00A7CF72 /* Favourite */,
+				5EF03CB52AB2F29200A7CF72 /* Stock */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -204,6 +214,24 @@
 				5ED711192AB05F97001F936F /* APIManager.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		5EF03CB52AB2F29200A7CF72 /* Stock */ = {
+			isa = PBXGroup;
+			children = (
+				5E616CD32AB1CF5D00DED86E /* StockViewCell.swift */,
+				5E616CD42AB1CF5D00DED86E /* StockViewCell.xib */,
+			);
+			path = Stock;
+			sourceTree = "<group>";
+		};
+		5EF03CB62AB2F29B00A7CF72 /* Favourite */ = {
+			isa = PBXGroup;
+			children = (
+				5EF03CB72AB2F2B500A7CF72 /* FavouriteViewCell.swift */,
+				5EF03CB82AB2F2B500A7CF72 /* FavouriteViewCell.xib */,
+			);
+			path = Favourite;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,8 +296,10 @@
 				5E7EF7F12AAF22C900F8386A /* LaunchScreen.storyboard in Resources */,
 				5E616CB82AB1A14600DED86E /* TabBarController.xib in Resources */,
 				5E616CC52AB1C42800DED86E /* HomeViewController.xib in Resources */,
+				5EF03CB42AB2F14300A7CF72 /* FavouriteViewController.xib in Resources */,
 				5E616CD62AB1CF5D00DED86E /* StockViewCell.xib in Resources */,
 				5E7EF7EE2AAF22C900F8386A /* Assets.xcassets in Resources */,
+				5EF03CBA2AB2F2B500A7CF72 /* FavouriteViewCell.xib in Resources */,
 				5E7EF7E92AAF22C600F8386A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,6 +334,7 @@
 			files = (
 				5E7EF7E62AAF22C600F8386A /* HomeViewController.swift in Sources */,
 				5E616CB72AB1A14600DED86E /* TabBarController.swift in Sources */,
+				5EF03CB92AB2F2B500A7CF72 /* FavouriteViewCell.swift in Sources */,
 				5ED711172AB05E01001F936F /* Endpoint.swift in Sources */,
 				5ED7111A2AB05F97001F936F /* APIManager.swift in Sources */,
 				5E0E7C742AB00DAF00BB6C5A /* ExchangeViewController.swift in Sources */,
@@ -316,6 +347,7 @@
 				5E0E7C702AB00D7D00BB6C5A /* FavouriteViewController.swift in Sources */,
 				5E0E7C762AB00DC300BB6C5A /* NewsViewController.swift in Sources */,
 				5E616CC72AB1CB1B00DED86E /* SearchBarExtension.swift in Sources */,
+				5EF03CBC2AB2F93000A7CF72 /* ViewExtension.swift in Sources */,
 				5E7EF7EC2AAF22C600F8386A /* CryptoCurrency.xcdatamodeld in Sources */,
 				5ED7111C2AB064CE001F936F /* Coin.swift in Sources */,
 				5E0E7C722AB00D9900BB6C5A /* DetailViewController.swift in Sources */,
