@@ -44,7 +44,7 @@ final class StockViewCell: UITableViewCell {
         changeImage.tintColor = isChanged ? .systemGreen : .systemRed
         
         if let imageColor = thisCoin.color {
-            stockImage.backgroundColor = UIColor.init(hexString: imageColor)
+            stockImage.backgroundColor = imageColor == "#000000" ? UIColor.white : UIColor.init(hexString: imageColor)
         }
     }
 
