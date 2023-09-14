@@ -8,5 +8,5 @@
 import Foundation
 
 enum Endpoint: String {
-    case baseAPI = "https://api.coinranking.com/v2/coins/"
+    case baseAPI = "https://api.coinranking.com/v2/coins?orderBy=price"
 }

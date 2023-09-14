@@ -28,7 +28,7 @@ final class TabBarController: UITabBarController {
         let selectedImages = ["house.fill", "heart.circle.fill", "dollarsign.circle.fill", "newspaper.fill"]
         let titles = ["Home", "Favourite", "Exchange", "News"]
 
-        for index in 0...(images.count-1) {
+        for index in 0...(items.count-1) {
             items[index].image = UIImage(systemName: images[index])
             items[index].selectedImage = UIImage(systemName: selectedImages[index])
             items[index].title = titles[index]

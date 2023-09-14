@@ -12,20 +12,28 @@ final class HomeViewController: UIViewController {
     @IBOutlet private weak var popUpButton: UIButton!
     @IBOutlet private weak var stockTableView: UITableView!
 
+    private var coins = [Coin]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         getCoinRanking()
         customizeView()
-        stockTableView.register(UINib(nibName: "StockViewCell", bundle: nil), forCellReuseIdentifier: "stockCellId")
-        stockTableView.delegate = self
-        stockTableView.dataSource = self
+        registerTableView()
     }
 
     private func getCoinRanking() {
         let queue = DispatchQueue(label: "getCoinRankingQueue", qos: .utility)
-        queue.async {
+        queue.async { [unowned self] in
             APIManager.shared.fetchCoinRanking(completion: { (coinsList: [Coin]) in
-                _ = coinsList.map { _ in }
+                _ = coinsList.map { coin in
+                    self.coins.append(Coin(symbol: coin.symbol,
+                                           name: coin.name,
+                                           color: coin.color,
+                                           iconUrl: coin.iconUrl,
+                                           price: coin.price,
+                                           change: coin.change))
+                }
+                self.stockTableView.reloadData()
             }, errorHandler: {
                 self.popUpErrorAlert(message: "Error fetching API")
             })
@@ -35,6 +43,12 @@ final class HomeViewController: UIViewController {
     private func customizeView() {
         setupPopUpButton()
         searchBar.customizeSearchBar()
+    }
+
+    private func registerTableView() {
+        stockTableView.register(UINib(nibName: "StockViewCell", bundle: nil), forCellReuseIdentifier: "stockCellId")
+        stockTableView.delegate = self
+        stockTableView.dataSource = self
     }
 
     private func setupPopUpButton() {
@@ -62,15 +76,17 @@ final class HomeViewController: UIViewController {
     }
 }
 
-extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
+extension HomeViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sampleRows = 10
-        return sampleRows
+        return coins.count
     }
+}
 
+extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = stockTableView.dequeueReusableCell(withIdentifier: "stockCellId", for: indexPath)
             as? StockViewCell {
+            cell.configStock(ranking: (indexPath.row + 1), thisCoin: coins[indexPath.row])
             return cell
         }
         return UITableViewCell()

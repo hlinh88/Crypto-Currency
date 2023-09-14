@@ -32,4 +32,15 @@ final class APIManager {
             }.resume()
         }
     }
+
+    func getImageData(stringURL: String, completion: @escaping (Data) -> Void) {
+        if let url = URL(string: stringURL) {
+            URLSession.shared.dataTask(with: url) { data, _, error in
+                guard let data = data, error == nil else { return }
+                DispatchQueue.main.async {
+                    completion(data)
+                }
+            }.resume()
+        }
+    }
 }
