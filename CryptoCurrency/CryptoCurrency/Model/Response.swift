@@ -7,10 +7,18 @@
 
 import Foundation
 
-struct Item: Codable {
+struct CoinRanking: Codable {
+    var data: CoinRankingItem
+}
+
+struct CoinRankingItem: Codable {
     var coins: [Coin]
 }
 
-struct Response: Codable {
-    var data: Item
+struct CoinDetail: Codable {
+    var data: CoinDetailItem
+}
+
+struct CoinDetailItem: Codable {
+    var coin: Coin
 }

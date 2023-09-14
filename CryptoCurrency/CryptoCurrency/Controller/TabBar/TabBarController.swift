@@ -10,13 +10,14 @@ import UIKit
 final class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let homeVC = HomeViewController()
-        let favouriteVC = FavouriteViewController()
-        let exchangeVC = ExchangeViewController()
-        let newsVC = NewsViewController()
+        let homeVC = UINavigationController(rootViewController: HomeViewController())
+        let favouriteVC = UINavigationController(rootViewController: FavouriteViewController())
+        let exchangeVC = UINavigationController(rootViewController: ExchangeViewController())
+        let newsVC = UINavigationController(rootViewController: NewsViewController())
 
-        self.setViewControllers([homeVC, favouriteVC, exchangeVC, newsVC], animated: false)
+        let controllers = [homeVC, favouriteVC, exchangeVC, newsVC]
+
+        self.setViewControllers(controllers, animated: false)
 
         configTabBar()
     }

@@ -26,7 +26,7 @@ final class StockViewCell: UITableViewCell {
     }
 
     func configStock(ranking: Int, thisCoin: Coin) {
-        setImagePNG(stringURL: thisCoin.iconUrl)
+        ViewManager.shared.setImagePNG(stringURL: thisCoin.iconUrl, imageView: stockImage, viewController: HomeViewController())
         rankingLabel.text = "\(ranking)"
         coinLabel.text = thisCoin.name
         symbolLabel.text = thisCoin.symbol
@@ -36,7 +36,7 @@ final class StockViewCell: UITableViewCell {
         }
 
         changeLabel.text = "\(thisCoin.change) %"
-        let isChanged = checkChangeRate(rate: thisCoin.change)
+        let isChanged = ViewManager.shared.checkChangeRate(rate: thisCoin.change)
         changeLabel.textColor = isChanged ? .systemGreen : .systemRed
         changeImage.image = isChanged
         ? UIImage(systemName: "arrowtriangle.up.fill")
@@ -45,29 +45,6 @@ final class StockViewCell: UITableViewCell {
         
         if let imageColor = thisCoin.color {
             stockImage.backgroundColor = imageColor == "#000000" ? UIColor.white : UIColor.init(hexString: imageColor)
-        }
-    }
-
-    private func checkChangeRate(rate: String) -> Bool {
-        return !(rate.prefix(1) == "-")
-    }
-
-    private func convertSVGToPNG(stringURL: String) -> String {
-        let fileType = String(stringURL.suffix(3))
-        if fileType == "svg" {
-            let raw = stringURL.dropLast(3)
-            let newStringURL = raw + "png"
-            return String(newStringURL)
-        }
-        return stringURL
-    }
-
-    func setImagePNG(stringURL: String) {
-        let finalStringUrl = convertSVGToPNG(stringURL: stringURL)
-        APIManager.shared.getImageData(stringURL: finalStringUrl) { (data: Data) in
-            DispatchQueue.main.async { [weak self] in
-                self?.stockImage.image = UIImage(data: data)
-            }
         }
     }
 

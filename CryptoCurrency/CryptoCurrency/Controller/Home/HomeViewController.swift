@@ -21,12 +21,23 @@ final class HomeViewController: UIViewController {
         registerTableView()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+
     private func getCoinRanking() {
         let queue = DispatchQueue(label: "getCoinRankingQueue", qos: .utility)
         queue.async { [unowned self] in
             APIManager.shared.fetchCoinRanking(completion: { (coinsList: [Coin]) in
                 _ = coinsList.map { coin in
-                    self.coins.append(Coin(symbol: coin.symbol,
+                    self.coins.append(Coin(uuid: coin.uuid,
+                                           symbol: coin.symbol,
                                            name: coin.name,
                                            color: coin.color,
                                            iconUrl: coin.iconUrl,
@@ -67,16 +78,9 @@ final class HomeViewController: UIViewController {
         popUpButton.changesSelectionAsPrimaryAction = true
     }
 
-    private func popUpErrorAlert(message: String) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Done", style: UIAlertAction.Style.default, handler: nil))
-        DispatchQueue.main.async {
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
 }
 
-extension HomeViewController: UITableViewDataSource{
+extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return coins.count
     }
@@ -90,5 +94,11 @@ extension HomeViewController: UITableViewDelegate {
             return cell
         }
         return UITableViewCell()
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = DetailViewController()
+        detailVC.uuid = coins[indexPath.row].uuid
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }
