@@ -24,7 +24,7 @@ final class FavouriteViewCell: UITableViewCell {
         topRightView.roundTopRightCorner()
         bottomLeftView.roundBottomLeftCorner()
         bottomRightView.roundBottomRightCorner()
-        coinImage.layer.cornerRadius = 10
+        coinImage.layer.cornerRadius = LayerSettings.radius.rawValue
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

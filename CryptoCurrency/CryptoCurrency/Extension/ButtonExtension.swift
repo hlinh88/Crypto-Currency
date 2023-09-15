@@ -20,4 +20,9 @@ extension UIButton {
         self.layer.cornerRadius = 10
         self.tintColor = UIColor.white
     }
+
+    func roundButton() {
+        self.layer.cornerRadius = self.frame.height / 2
+        self.clipsToBounds = true
+    }
 }
