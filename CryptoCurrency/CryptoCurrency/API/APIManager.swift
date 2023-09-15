@@ -19,7 +19,7 @@ final class APIManager {
             URLSession.shared.dataTask(with: url) { (data, _, _) in
                 do {
                     if let postData = data {
-                        let decodedData = try JSONDecoder().decode(CoinRanking.self, from: postData)
+                        let decodedData = try JSONDecoder().decode(CoinRankingResponse.self, from: postData)
                         DispatchQueue.main.async {
                             completion(decodedData.data.coins)
                         }
@@ -40,9 +40,37 @@ final class APIManager {
             URLSession.shared.dataTask(with: url) { (data, _, _) in
                 do {
                     if let postData = data {
-                        let decodedData = try JSONDecoder().decode(CoinDetail.self, from: postData)
+                        let decodedData = try JSONDecoder().decode(CoinDetailResponse.self, from: postData)
                         DispatchQueue.main.async {
                             completion(decodedData.data.coin)
+                        }
+                    } else {
+                        errorHandler()
+                    }
+                } catch {
+                    errorHandler()
+                }
+            }.resume()
+        }
+    }
+
+    func fetchNews(completion: @escaping ([News]) -> Void, errorHandler: @escaping () -> Void) {
+        let headers = [
+            "X-RapidAPI-Key": Key.newsAPIKey.rawValue,
+            "X-RapidAPI-Host": Key.newsHost.rawValue
+        ]
+        if let url = NSURL(string: Endpoint.newsAPI.rawValue) {
+            let request = NSMutableURLRequest(url: url as URL,
+                                                    cachePolicy: .useProtocolCachePolicy,
+                                                timeoutInterval: 10.0)
+            request.httpMethod = "GET"
+            request.allHTTPHeaderFields = headers
+            URLSession.shared.dataTask(with: request as URLRequest) { (data, _, _) in
+                do {
+                    if let postData = data {
+                        let decodedData = try JSONDecoder().decode(NewsResponse.self, from: postData)
+                        DispatchQueue.main.async {
+                            completion(decodedData.data.news)
                         }
                     } else {
                         errorHandler()

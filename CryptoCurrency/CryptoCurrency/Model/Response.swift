@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CoinRanking: Codable {
+struct CoinRankingResponse: Codable {
     var data: CoinRankingItem
 }
 
@@ -15,10 +15,34 @@ struct CoinRankingItem: Codable {
     var coins: [Coin]
 }
 
-struct CoinDetail: Codable {
+struct CoinDetailResponse: Codable {
     var data: CoinDetailItem
 }
 
 struct CoinDetailItem: Codable {
     var coin: Coin
+}
+
+struct NewsResponse: Codable {
+    var data: NewsItem
+}
+
+struct NewsItem: Codable {
+    var news: [News]
+}
+
+struct News: Codable {
+    var articleTitle: String
+    var articleUrl: String
+    var articlePhotoUrl: String
+    var source: String
+    var postTimeUtc: String
+
+    enum CodingKeys: String, CodingKey {
+        case source
+        case articleTitle = "article_title"
+        case articleUrl = "article_url"
+        case articlePhotoUrl = "article_photo_url"
+        case postTimeUtc = "post_time_utc"
+    }
 }

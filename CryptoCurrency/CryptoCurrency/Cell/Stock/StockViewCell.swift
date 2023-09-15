@@ -26,7 +26,9 @@ final class StockViewCell: UITableViewCell {
     }
 
     func configStock(ranking: Int, thisCoin: Coin) {
-        ViewManager.shared.setImagePNG(stringURL: thisCoin.iconUrl, imageView: stockImage, viewController: HomeViewController())
+        ViewManager.shared.setImagePNG(stringURL: thisCoin.iconUrl,
+                                       imageView: stockImage,
+                                       viewController: HomeViewController())
         rankingLabel.text = "\(ranking)"
         coinLabel.text = thisCoin.name
         symbolLabel.text = thisCoin.symbol
