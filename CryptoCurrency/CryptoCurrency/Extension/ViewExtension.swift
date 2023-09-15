@@ -31,4 +31,16 @@ extension UIView {
         self.layer.maskedCorners = .layerMaxXMaxYCorner
         self.layer.masksToBounds = true
     }
+
+    func roundLeftCorners() {
+        self.layer.cornerRadius = 10
+        self.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
+        self.layer.masksToBounds = true
+    }
+
+    func roundRightCorners() {
+        self.layer.cornerRadius = 10
+        self.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]
+        self.layer.masksToBounds = true
+    }
 }
