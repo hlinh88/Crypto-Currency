@@ -22,7 +22,7 @@ final class StockViewCell: UITableViewCell {
     }
 
     private func customizeCell() {
-        stockImage.layer.cornerRadius = 10
+        stockImage.layer.cornerRadius = LayerSettings.radius.rawValue
     }
 
     func configStock(ranking: Int, thisCoin: Coin) {
