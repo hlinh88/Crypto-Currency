@@ -30,7 +30,7 @@ final class NewsViewCell: UITableViewCell {
         dateLabel.text = thisNews.postTimeUtc
         titleLabel.text = thisNews.articleTitle
         sourceLabel.text = thisNews.source
-        linkURL = thisNews.articleUrl
+        url = thisNews.articleUrl
     }
 
     private func customizeCell() {
@@ -38,7 +38,8 @@ final class NewsViewCell: UITableViewCell {
         newsRightView.roundRightCorners()
         newsImageView.layer.cornerRadius = LayerSettings.radius.rawValue
         newsImageView.layer.masksToBounds = true
-        newsStackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(newsStackViewClicked)))
+        newsStackView.addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                                  action: #selector(newsStackViewClicked)))
     }
 
     @objc func newsStackViewClicked() {

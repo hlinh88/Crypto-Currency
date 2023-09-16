@@ -9,11 +9,11 @@ import UIKit
 
 final class APIManager {
     static let shared = APIManager()
-    
+
     private init() {}
-    
-    func fetchCoinRanking(completion: @escaping ([Coin]) -> Void, errorHandler: @escaping () -> Void) {
-        if let url = URL(string: "\(Endpoint.coinRankingAPI.rawValue)?orderBy=price") {
+
+    func fetchCoinRanking(orderBy: String, completion: @escaping ([Coin]) -> Void, errorHandler: @escaping () -> Void) {
+        if let url = URL(string: "\(Endpoint.coinRankingAPI.rawValue)?orderBy=\(orderBy)") {
             var request = URLRequest(url: url)
             request.addValue(Key.apiKey.rawValue, forHTTPHeaderField: "TRN-Api-Key")
             URLSession.shared.dataTask(with: url) { (data, _, _) in

@@ -19,6 +19,8 @@ extension UIButton {
         self.backgroundColor = UIColor.buttonColor
         self.layer.cornerRadius = 10
         self.tintColor = UIColor.white
+        self.imageEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+        self.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
     }
 
     func roundButton() {
