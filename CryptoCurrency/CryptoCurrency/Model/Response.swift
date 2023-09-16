@@ -23,6 +23,10 @@ struct CoinDetailItem: Codable {
     var coin: Coin
 }
 
+struct Supply: Codable {
+    var total: String
+}
+
 struct NewsResponse: Codable {
     var data: NewsItem
 }

@@ -12,11 +12,12 @@
 		5E0E7C722AB00D9900BB6C5A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0E7C712AB00D9900BB6C5A /* DetailViewController.swift */; };
 		5E0E7C742AB00DAF00BB6C5A /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0E7C732AB00DAF00BB6C5A /* ExchangeViewController.swift */; };
 		5E0E7C762AB00DC300BB6C5A /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0E7C752AB00DC300BB6C5A /* NewsViewController.swift */; };
+		5E1F92952AB5AFC300BB3BA0 /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1F92942AB5AFC300BB3BA0 /* TextFieldExtension.swift */; };
+		5E1F92A22AB7F89000BB3BA0 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1F92A12AB7F89000BB3BA0 /* StringExtension.swift */; };
 		5E616CB72AB1A14600DED86E /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E616CB52AB1A14600DED86E /* TabBarController.swift */; };
 		5E616CB82AB1A14600DED86E /* TabBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E616CB62AB1A14600DED86E /* TabBarController.xib */; };
 		5E616CC32AB1B91900DED86E /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E616CC22AB1B91900DED86E /* ColorExtension.swift */; };
 		5E616CC52AB1C42800DED86E /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E616CC42AB1C42800DED86E /* HomeViewController.xib */; };
-		5E616CC72AB1CB1B00DED86E /* SearchBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E616CC62AB1CB1B00DED86E /* SearchBarExtension.swift */; };
 		5E616CC92AB1CC6800DED86E /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E616CC82AB1CC6800DED86E /* ButtonExtension.swift */; };
 		5E616CD52AB1CF5D00DED86E /* StockViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E616CD32AB1CF5D00DED86E /* StockViewCell.swift */; };
 		5E616CD62AB1CF5D00DED86E /* StockViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E616CD42AB1CF5D00DED86E /* StockViewCell.xib */; };
@@ -51,11 +52,12 @@
 		5E0E7C712AB00D9900BB6C5A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5E0E7C732AB00DAF00BB6C5A /* ExchangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewController.swift; sourceTree = "<group>"; };
 		5E0E7C752AB00DC300BB6C5A /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		5E1F92942AB5AFC300BB3BA0 /* TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
+		5E1F92A12AB7F89000BB3BA0 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		5E616CB52AB1A14600DED86E /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		5E616CB62AB1A14600DED86E /* TabBarController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarController.xib; sourceTree = "<group>"; };
 		5E616CC22AB1B91900DED86E /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		5E616CC42AB1C42800DED86E /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
-		5E616CC62AB1CB1B00DED86E /* SearchBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarExtension.swift; sourceTree = "<group>"; };
 		5E616CC82AB1CC6800DED86E /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
 		5E616CD32AB1CF5D00DED86E /* StockViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewCell.swift; sourceTree = "<group>"; };
 		5E616CD42AB1CF5D00DED86E /* StockViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StockViewCell.xib; sourceTree = "<group>"; };
@@ -144,11 +146,12 @@
 			isa = PBXGroup;
 			children = (
 				5E616CC22AB1B91900DED86E /* ColorExtension.swift */,
-				5E616CC62AB1CB1B00DED86E /* SearchBarExtension.swift */,
 				5E616CC82AB1CC6800DED86E /* ButtonExtension.swift */,
 				5EF03CBB2AB2F93000A7CF72 /* ViewExtension.swift */,
 				5EF03CBF2AB33AD300A7CF72 /* ViewControllerExtension.swift */,
 				5EE4C1C22AB42DF4005DCFEF /* ImageViewExtension.swift */,
+				5E1F92942AB5AFC300BB3BA0 /* TextFieldExtension.swift */,
+				5E1F92A12AB7F89000BB3BA0 /* StringExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -378,8 +381,10 @@
 				5ED7111A2AB05F97001F936F /* APIManager.swift in Sources */,
 				5E0E7C742AB00DAF00BB6C5A /* ExchangeViewController.swift in Sources */,
 				5E616CC32AB1B91900DED86E /* ColorExtension.swift in Sources */,
+				5E1F92A22AB7F89000BB3BA0 /* StringExtension.swift in Sources */,
 				5E7EF7E22AAF22C600F8386A /* AppDelegate.swift in Sources */,
 				5EF03CC02AB33AD300A7CF72 /* ViewControllerExtension.swift in Sources */,
+				5E1F92952AB5AFC300BB3BA0 /* TextFieldExtension.swift in Sources */,
 				5EE049382AB0774300810282 /* Key.swift in Sources */,
 				5E0E7C6E2AB00D2D00BB6C5A /* Response.swift in Sources */,
 				5E616CD52AB1CF5D00DED86E /* StockViewCell.swift in Sources */,
@@ -388,7 +393,6 @@
 				5E0E7C702AB00D7D00BB6C5A /* FavouriteViewController.swift in Sources */,
 				5E0E7C762AB00DC300BB6C5A /* NewsViewController.swift in Sources */,
 				5EE4C1C32AB42DF4005DCFEF /* ImageViewExtension.swift in Sources */,
-				5E616CC72AB1CB1B00DED86E /* SearchBarExtension.swift in Sources */,
 				5EE4C1C52AB42E31005DCFEF /* LayerSettings.swift in Sources */,
 				5EF03CBC2AB2F93000A7CF72 /* ViewExtension.swift in Sources */,
 				5E7EF7EC2AAF22C600F8386A /* CryptoCurrency.xcdatamodeld in Sources */,

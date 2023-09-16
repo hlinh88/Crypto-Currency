@@ -11,7 +11,6 @@ final class NewsViewController: UIViewController {
     @IBOutlet private weak var newsTableView: UITableView!
 
     private var news = [News]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         registerTableView()

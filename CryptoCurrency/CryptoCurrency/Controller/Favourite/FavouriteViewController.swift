@@ -34,6 +34,7 @@ extension FavouriteViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = favouriteTableView.dequeueReusableCell(withIdentifier: "favouriteCellId", for: indexPath)
             as? FavouriteViewCell {
+            // TODO: Config Favourite Cell 
             return cell
         }
         return UITableViewCell()

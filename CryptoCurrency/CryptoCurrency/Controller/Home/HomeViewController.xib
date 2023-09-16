@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="CryptoCurrency" customModuleProvider="target">
             <connections>
                 <outlet property="popUpButton" destination="oAB-il-Wrz" id="a7t-Ib-BRd"/>
-                <outlet property="searchBar" destination="bd7-Fv-jZ7" id="ei2-au-fzC"/>
+                <outlet property="searchTextField" destination="SNI-yj-3of" id="yGq-GD-OHV"/>
                 <outlet property="stockTableView" destination="AN1-dg-00R" id="E8c-nS-aBz"/>
                 <outlet property="view" destination="iN0-l3-epB" id="kYM-oz-IWZ"/>
             </connections>
@@ -33,24 +34,28 @@
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Kry-yW-3jm">
                             <rect key="frame" x="15" y="130.66666666666666" width="363" height="61.333333333333343"/>
                             <subviews>
-                                <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="bd7-Fv-jZ7">
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="SNI-yj-3of">
                                     <rect key="frame" x="0.0" y="10" width="176.66666666666666" height="41.333333333333336"/>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <textInputTraits key="textInputTraits"/>
                                     <connections>
-                                        <outlet property="delegate" destination="-1" id="Xwz-hH-tiv"/>
+                                        <action selector="searchHandler:" destination="-1" eventType="editingChanged" id="MTU-Oc-u9b"/>
                                     </connections>
-                                </searchBar>
-                                <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oAB-il-Wrz">
+                                </textField>
+                                <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oAB-il-Wrz">
                                     <rect key="frame" x="186.66666666666663" y="10" width="176.33333333333337" height="41.333333333333336"/>
-                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                     <menu key="menu" id="fYB-rc-Auq">
                                         <children>
                                             <command title="Item 1" id="6PG-tO-4gc"/>
                                             <command title="Item 2" id="o9a-tk-orq"/>
                                         </children>
                                     </menu>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                    <state key="normal" title="Button">
+                                        <imageReference key="image" image="chevron.up.chevron.down" catalog="system" symbolScale="medium"/>
+                                    </state>
                                 </button>
                             </subviews>
                             <directionalEdgeInsets key="directionalLayoutMargins" top="10" leading="0.0" bottom="10" trailing="0.0"/>
@@ -81,4 +86,7 @@
             <point key="canvasLocation" x="-22" y="93"/>
         </view>
     </objects>
+    <resources>
+        <image name="chevron.up.chevron.down" catalog="system" width="128" height="128"/>
+    </resources>
 </document>
