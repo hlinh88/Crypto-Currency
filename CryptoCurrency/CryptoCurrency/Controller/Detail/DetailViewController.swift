@@ -146,9 +146,11 @@ final class DetailViewController: UIViewController {
         followButton.backgroundColor = isFollow ? UIColor.mainColor : UIColor.gray
         followButton.setTitle(isFollow ? "Follow" : "Following", for: .normal)
         if let uuid = thisCoin?.uuid {
-            isFollow
-            ? CoreDataManager.shared.deleteItem(uuid: uuid)
-            : CoreDataManager.shared.saveItem(favouriteCoinInfo: coinDetailDictionary)
+            if isFollow {
+                CoreDataManager.shared.deleteItem(uuid: uuid)
+            } else {
+                CoreDataManager.shared.saveItem(favouriteCoinInfo: coinDetailDictionary)
+            }
         }
         isFollow.toggle()
     }

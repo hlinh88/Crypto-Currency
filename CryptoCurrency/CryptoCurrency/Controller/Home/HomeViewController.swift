@@ -143,9 +143,11 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = stockTableView.dequeueReusableCell(withIdentifier: "stockCellId", for: indexPath)
             as? StockViewCell {
-            isSearching
-            ? cell.configStock(ranking: (indexPath.row + 1), thisCoin: searchCoins[indexPath.row])
-            :  cell.configStock(ranking: (indexPath.row + 1), thisCoin: coins[indexPath.row])
+            if isSearching {
+                cell.configStock(ranking: (indexPath.row + 1), thisCoin: searchCoins[indexPath.row])
+            } else {
+                cell.configStock(ranking: (indexPath.row + 1), thisCoin: coins[indexPath.row])
+            }
             return cell
         }
         return UITableViewCell()

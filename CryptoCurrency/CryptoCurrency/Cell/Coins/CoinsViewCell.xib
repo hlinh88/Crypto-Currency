@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="coinsCellId" id="KGk-i7-Jjw" customClass="CoinsViewCell" customModule="CryptoCurrency" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="uCa-V9-XdG">
+                        <rect key="frame" x="15" y="5" width="290" height="34"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AQb-DK-uha">
+                                <rect key="frame" x="0.0" y="0.0" width="145" height="34"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bitcoinsign.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="asS-oG-17v">
+                                        <rect key="frame" x="0.0" y="2.9999999999999982" width="30" height="28.666666666666664"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="asS-oG-17v" secondAttribute="height" multiplier="1:1" id="icL-tk-JIm"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coin name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htS-1c-8UF">
+                                        <rect key="frame" x="37.999999999999993" y="8.6666666666666643" width="71.333333333333314" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="asS-oG-17v" firstAttribute="centerY" secondItem="AQb-DK-uha" secondAttribute="centerY" id="3uZ-lg-qRp"/>
+                                    <constraint firstItem="asS-oG-17v" firstAttribute="top" secondItem="AQb-DK-uha" secondAttribute="top" constant="2" id="Oh0-ks-SMH"/>
+                                    <constraint firstItem="htS-1c-8UF" firstAttribute="leading" secondItem="asS-oG-17v" secondAttribute="trailing" constant="8" id="f0b-eP-oUv"/>
+                                    <constraint firstItem="asS-oG-17v" firstAttribute="leading" secondItem="AQb-DK-uha" secondAttribute="leading" id="j7O-EB-pFW"/>
+                                    <constraint firstItem="htS-1c-8UF" firstAttribute="centerY" secondItem="AQb-DK-uha" secondAttribute="centerY" id="kX0-3X-Ucy"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NMB-dq-btW">
+                                <rect key="frame" x="145" y="0.0" width="145" height="34"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Symbol" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FrM-Y9-tOz">
+                                        <rect key="frame" x="96.333333333333314" y="9.3333333333333357" width="48.666666666666657" height="15.666666666666664"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                        <color key="textColor" red="0.60784313725490191" green="0.61960784313725492" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="FrM-Y9-tOz" firstAttribute="centerY" secondItem="NMB-dq-btW" secondAttribute="centerY" id="6Jh-8b-HLt"/>
+                                    <constraint firstAttribute="trailing" secondItem="FrM-Y9-tOz" secondAttribute="trailing" id="6Pd-Yb-cF2"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <color key="backgroundColor" red="0.098039215686274508" green="0.10980392156862745" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="uCa-V9-XdG" secondAttribute="bottom" constant="5" id="COq-z7-5Bt"/>
+                    <constraint firstItem="uCa-V9-XdG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="kr7-ca-SxH"/>
+                    <constraint firstItem="uCa-V9-XdG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="lfa-9Y-XUf"/>
+                    <constraint firstAttribute="trailing" secondItem="uCa-V9-XdG" secondAttribute="trailing" constant="15" id="nUO-ks-Hio"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="coinImageView" destination="asS-oG-17v" id="c8Y-7M-NxE"/>
+                <outlet property="coinNameLabel" destination="htS-1c-8UF" id="xdn-I5-vpb"/>
+                <outlet property="coinSymbolLabel" destination="FrM-Y9-tOz" id="8Pt-bn-STb"/>
+            </connections>
+            <point key="canvasLocation" x="129.7709923664122" y="-11.267605633802818"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="bitcoinsign.circle.fill" catalog="system" width="128" height="123"/>
+    </resources>
+</document>
