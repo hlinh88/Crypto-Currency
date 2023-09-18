@@ -14,6 +14,10 @@
 		5E0E7C762AB00DC300BB6C5A /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0E7C752AB00DC300BB6C5A /* NewsViewController.swift */; };
 		5E1F92952AB5AFC300BB3BA0 /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1F92942AB5AFC300BB3BA0 /* TextFieldExtension.swift */; };
 		5E1F92A22AB7F89000BB3BA0 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1F92A12AB7F89000BB3BA0 /* StringExtension.swift */; };
+		5E1F92A52AB7FA1F00BB3BA0 /* Favourite+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1F92A32AB7FA1F00BB3BA0 /* Favourite+CoreDataClass.swift */; };
+		5E1F92A62AB7FA1F00BB3BA0 /* Favourite+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1F92A42AB7FA1F00BB3BA0 /* Favourite+CoreDataProperties.swift */; };
+		5E1F92A92AB7FA5200BB3BA0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1F92A82AB7FA5200BB3BA0 /* CoreDataManager.swift */; };
+		5E1F92AB2AB8534300BB3BA0 /* FavouriteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1F92AA2AB8534300BB3BA0 /* FavouriteManager.swift */; };
 		5E616CB72AB1A14600DED86E /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E616CB52AB1A14600DED86E /* TabBarController.swift */; };
 		5E616CB82AB1A14600DED86E /* TabBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E616CB62AB1A14600DED86E /* TabBarController.xib */; };
 		5E616CC32AB1B91900DED86E /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E616CC22AB1B91900DED86E /* ColorExtension.swift */; };
@@ -54,6 +58,10 @@
 		5E0E7C752AB00DC300BB6C5A /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		5E1F92942AB5AFC300BB3BA0 /* TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
 		5E1F92A12AB7F89000BB3BA0 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		5E1F92A32AB7FA1F00BB3BA0 /* Favourite+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favourite+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5E1F92A42AB7FA1F00BB3BA0 /* Favourite+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favourite+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5E1F92A82AB7FA5200BB3BA0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		5E1F92AA2AB8534300BB3BA0 /* FavouriteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteManager.swift; sourceTree = "<group>"; };
 		5E616CB52AB1A14600DED86E /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		5E616CB62AB1A14600DED86E /* TabBarController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarController.xib; sourceTree = "<group>"; };
 		5E616CC22AB1B91900DED86E /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
@@ -122,6 +130,15 @@
 				5E616CB92AB1A8AE00DED86E /* TabBar */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		5E1F92A72AB7FA2300BB3BA0 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				5E1F92A32AB7FA1F00BB3BA0 /* Favourite+CoreDataClass.swift */,
+				5E1F92A42AB7FA1F00BB3BA0 /* Favourite+CoreDataProperties.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		5E616CB92AB1A8AE00DED86E /* TabBar */ = {
@@ -221,9 +238,10 @@
 		5E7EF7E02AAF22C600F8386A /* CryptoCurrency */ = {
 			isa = PBXGroup;
 			children = (
+				5E1F92A72AB7FA2300BB3BA0 /* CoreData */,
 				5E616CCE2AB1CD5F00DED86E /* Cell */,
 				5E616CC12AB1B8E600DED86E /* Extension */,
-				5ED711182AB05F7C001F936F /* API */,
+				5ED711182AB05F7C001F936F /* Manager */,
 				5E0E7C6C2AB00C1B00BB6C5A /* Controller */,
 				5E0E7C6A2AB00C1100BB6C5A /* Model */,
 				5E7EF7E12AAF22C600F8386A /* AppDelegate.swift */,
@@ -236,13 +254,15 @@
 			path = CryptoCurrency;
 			sourceTree = "<group>";
 		};
-		5ED711182AB05F7C001F936F /* API */ = {
+		5ED711182AB05F7C001F936F /* Manager */ = {
 			isa = PBXGroup;
 			children = (
 				5ED711192AB05F97001F936F /* APIManager.swift */,
 				5EF03CC12AB363D800A7CF72 /* ViewManager.swift */,
+				5E1F92A82AB7FA5200BB3BA0 /* CoreDataManager.swift */,
+				5E1F92AA2AB8534300BB3BA0 /* FavouriteManager.swift */,
 			);
-			path = API;
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		5EE4C1C82AB4344F005DCFEF /* News */ = {
@@ -383,7 +403,9 @@
 				5E616CC32AB1B91900DED86E /* ColorExtension.swift in Sources */,
 				5E1F92A22AB7F89000BB3BA0 /* StringExtension.swift in Sources */,
 				5E7EF7E22AAF22C600F8386A /* AppDelegate.swift in Sources */,
+				5E1F92A52AB7FA1F00BB3BA0 /* Favourite+CoreDataClass.swift in Sources */,
 				5EF03CC02AB33AD300A7CF72 /* ViewControllerExtension.swift in Sources */,
+				5E1F92A62AB7FA1F00BB3BA0 /* Favourite+CoreDataProperties.swift in Sources */,
 				5E1F92952AB5AFC300BB3BA0 /* TextFieldExtension.swift in Sources */,
 				5EE049382AB0774300810282 /* Key.swift in Sources */,
 				5E0E7C6E2AB00D2D00BB6C5A /* Response.swift in Sources */,
@@ -394,10 +416,12 @@
 				5E0E7C762AB00DC300BB6C5A /* NewsViewController.swift in Sources */,
 				5EE4C1C32AB42DF4005DCFEF /* ImageViewExtension.swift in Sources */,
 				5EE4C1C52AB42E31005DCFEF /* LayerSettings.swift in Sources */,
+				5E1F92AB2AB8534300BB3BA0 /* FavouriteManager.swift in Sources */,
 				5EF03CBC2AB2F93000A7CF72 /* ViewExtension.swift in Sources */,
 				5E7EF7EC2AAF22C600F8386A /* CryptoCurrency.xcdatamodeld in Sources */,
 				5EE4C1CB2AB43462005DCFEF /* NewsViewCell.swift in Sources */,
 				5ED7111C2AB064CE001F936F /* Coin.swift in Sources */,
+				5E1F92A92AB7FA5200BB3BA0 /* CoreDataManager.swift in Sources */,
 				5E0E7C722AB00D9900BB6C5A /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

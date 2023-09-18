@@ -11,4 +11,8 @@ extension String {
     static let isEmpty: String = {
         return ""
     }()
+
+    static let blackColor: String = {
+        return "#000000"
+    }()
 }

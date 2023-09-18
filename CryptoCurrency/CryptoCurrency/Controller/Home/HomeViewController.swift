@@ -16,6 +16,7 @@ final class HomeViewController: UIViewController {
     private var searchCoins = [Coin]()
     private var isSearching = false
     private var categoryId = 0
+    private var isFirstTimeLoading = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,10 @@ final class HomeViewController: UIViewController {
         getCoinRanking(categoryId: categoryId)
         customizeView()
         registerTableView()
+        if isFirstTimeLoading {
+            isFirstTimeLoading.toggle()
+            CoreDataManager.shared.getAllItems()
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
