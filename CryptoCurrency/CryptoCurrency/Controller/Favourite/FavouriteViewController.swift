@@ -15,6 +15,10 @@ final class FavouriteViewController: UIViewController {
         registerTableView()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        favouriteTableView.reloadData()
+    }
+
     private func registerTableView() {
         favouriteTableView.register(UINib(nibName: "FavouriteViewCell", bundle: nil),
                                     forCellReuseIdentifier: "favouriteCellId")
@@ -25,8 +29,7 @@ final class FavouriteViewController: UIViewController {
 
 extension FavouriteViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sample = 5
-        return sample
+        return FavouriteManager.favourites.count
     }
 }
 
@@ -34,9 +37,16 @@ extension FavouriteViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = favouriteTableView.dequeueReusableCell(withIdentifier: "favouriteCellId", for: indexPath)
             as? FavouriteViewCell {
-            // TODO: Config Favourite Cell 
+            cell.delegate = self
+            cell.configFavouriteCell(thisFavourite: FavouriteManager.favourites[indexPath.row])
             return cell
         }
         return UITableViewCell()
+    }
+}
+
+extension FavouriteViewController: FavouriteViewCellDelegate {
+    func removeButtonTapped(sender: UIButton) {
+        self.favouriteTableView.reloadData()
     }
 }

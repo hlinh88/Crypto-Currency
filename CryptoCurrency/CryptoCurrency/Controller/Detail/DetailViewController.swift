@@ -20,6 +20,9 @@ final class DetailViewController: UIViewController {
     @IBOutlet private weak var supplyLabel: UILabel!
     @IBOutlet private weak var changeRateLabel: UILabel!
 
+    private var coinDetailDictionary: [String: String] = [:]
+    private var isFollow = false
+
     var uuid: String?
     private var thisCoin: Coin?
 
@@ -39,11 +42,31 @@ final class DetailViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
+    private func passDetailToFavourite(uuid: String,
+                                       name: String,
+                                       symbol: String,
+                                       iconUrl: String,
+                                       color: String,
+                                       price: String) {
+        coinDetailDictionary["uuid"] = uuid
+        coinDetailDictionary["name"] = name
+        coinDetailDictionary["symbol"] = symbol
+        coinDetailDictionary["iconUrl"] = iconUrl
+        coinDetailDictionary["color"] = color
+        coinDetailDictionary["price"] = price
+    }
+
     private func getCoinDetail() {
         let queue = DispatchQueue(label: "getCoinDetailQueue", qos: .utility)
         queue.async { [unowned self] in
             if let uuid = self.uuid {
                 APIManager.shared.fetchCoinDetail(uuid: uuid, completion: { (coin: Coin) in
+                    self.passDetailToFavourite(uuid: coin.uuid,
+                                               name: coin.name,
+                                               symbol: coin.symbol,
+                                               iconUrl: coin.iconUrl,
+                                               color: coin.color ?? String.isEmpty,
+                                               price: coin.price)
                     self.thisCoin = Coin(uuid: coin.uuid,
                                          symbol: coin.symbol,
                                          name: coin.name,
@@ -55,12 +78,21 @@ final class DetailViewController: UIViewController {
                                          marketCap: coin.marketCap,
                                          volume24h: coin.volume24h,
                                          supply: coin.supply)
+                    self.checkFollowStatus()
                     self.configDetailView()
                 }, errorHandler: {
                     self.popUpErrorAlert(message: "Error fetching data")
                 })
             }
         }
+    }
+
+    private func checkFollowStatus() {
+        _ = FavouriteManager.favourites.map({ favourite in
+            if favourite.uuid == thisCoin?.uuid {
+                self.isFollow = true
+            }
+        })
     }
 
     private func customizeView() {
@@ -84,6 +116,8 @@ final class DetailViewController: UIViewController {
                 coinPriceLabel.text = "$\(String(format: "%.2f", decimal))"
             }
         }
+        followButton.backgroundColor = isFollow ? UIColor.gray : UIColor.mainColor
+        followButton.setTitle(isFollow ? "Following" : "Follow", for: .normal)
         coinDesLabel.text = thisCoin?.description
         if let marketCap = thisCoin?.marketCap,
            let volume24h = thisCoin?.volume24h,
@@ -94,8 +128,8 @@ final class DetailViewController: UIViewController {
                 marketCapLabel.text = "$\(marketCapValue.formatted())"
                 volume24hLabel.text = "$\(volume24hValue.formatted())"
                 supplyLabel.text = supplyTotalValue.formatted()
-                }
             }
+        }
 
         if let changeRate = thisCoin?.change {
             let isChanged = ViewManager.shared.checkChangeRate(rate: changeRate)
@@ -106,5 +140,16 @@ final class DetailViewController: UIViewController {
 
     @IBAction func handleBackButton(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
+    }
+
+    @IBAction private func handleFollowButton(_ sender: UIButton) {
+        followButton.backgroundColor = isFollow ? UIColor.mainColor : UIColor.gray
+        followButton.setTitle(isFollow ? "Follow" : "Following", for: .normal)
+        if let uuid = thisCoin?.uuid {
+            isFollow
+            ? CoreDataManager.shared.deleteItem(uuid: uuid)
+            : CoreDataManager.shared.saveItem(favouriteCoinInfo: coinDetailDictionary)
+        }
+        isFollow.toggle()
     }
 }
