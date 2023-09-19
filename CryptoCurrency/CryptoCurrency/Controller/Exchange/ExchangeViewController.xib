@@ -10,11 +10,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExchangeViewController" customModule="CryptoCurrency" customModuleProvider="target">
             <connections>
-                <outlet property="coinButton" destination="JF7-iy-D0D" id="R8Z-FE-QNT"/>
                 <outlet property="coinImageView" destination="ggI-bP-z9f" id="3Mz-PB-evR"/>
+                <outlet property="coinNameLabel" destination="fOR-oD-sbr" id="Eal-ga-dvj"/>
+                <outlet property="coinSymbolLabel" destination="Clw-WC-PU7" id="u3K-xf-ibq"/>
+                <outlet property="coinTextField" destination="sCH-Iu-Ueo" id="QJv-Ss-s9Z"/>
                 <outlet property="coinView" destination="jma-zs-tAt" id="WVz-Ap-R7f"/>
                 <outlet property="exchangeButton" destination="RVG-kM-2C7" id="9EP-bN-2ZR"/>
                 <outlet property="moneyImageView" destination="Hax-vo-hEt" id="QXO-gq-cZG"/>
+                <outlet property="moneyNameLabel" destination="HRj-bP-Ql1" id="2Sq-8v-j3a"/>
+                <outlet property="moneyPriceLabel" destination="KlL-rj-Qrt" id="vI6-fE-yLU"/>
+                <outlet property="moneySymbolLabel" destination="5ic-Vl-ybz" id="pKt-J4-cKD"/>
                 <outlet property="moneyView" destination="4SA-b9-3rW" id="CV1-lX-edl"/>
                 <outlet property="view" destination="iN0-l3-epB" id="giV-LN-Xgz"/>
             </connections>
@@ -45,59 +50,49 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jma-zs-tAt">
                     <rect key="frame" x="30" y="230" width="333" height="150"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleAspectFit" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JF7-iy-D0D">
-                            <rect key="frame" x="110" y="30" width="70" height="20"/>
-                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="-4" maxY="0.0"/>
-                            <state key="normal" title="Bitcoin" image="chevron.up.chevron.down" catalog="system"/>
-                        </button>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bitcoinsign" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ggI-bP-z9f">
-                            <rect key="frame" x="15" y="29.999999999999993" width="90" height="90.666666666666657"/>
-                            <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ggI-bP-z9f">
+                            <rect key="frame" x="15" y="30" width="90" height="90"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="ggI-bP-z9f" secondAttribute="height" multiplier="1:1" id="fpt-5r-TOb"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BTC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Clw-WC-PU7">
-                            <rect key="frame" x="115" y="55" width="25.666666666666657" height="15.666666666666671"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Clw-WC-PU7">
+                            <rect key="frame" x="120" y="54.333333333333314" width="11.666666666666657" height="15.666666666666671"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" red="0.60784313725490191" green="0.61960784313725492" blue="0.67843137254901964" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="BPQ-H4-KFY">
-                            <rect key="frame" x="115.00000000000001" y="75.666666666666686" width="181.33333333333337" height="36"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="757-FW-2CC">
-                                    <rect key="frame" x="0.0" y="0.0" width="14" height="36"/>
-                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sCH-Iu-Ueo">
-                                    <rect key="frame" x="19" y="0.0" width="162.33333333333334" height="36"/>
-                                    <color key="backgroundColor" red="0.098039215686274508" green="0.10980392156862745" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </textField>
-                            </subviews>
-                        </stackView>
+                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter amount" textAlignment="natural" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="sCH-Iu-Ueo">
+                            <rect key="frame" x="120.00000000000001" y="80" width="162.33333333333337" height="36"/>
+                            <color key="backgroundColor" red="0.098039215686274508" green="0.10980392156862745" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            <connections>
+                                <action selector="handleTextFieldChanged:" destination="-1" eventType="editingChanged" id="8q0-Fq-EcF"/>
+                            </connections>
+                        </textField>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose coin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOR-oD-sbr">
+                            <rect key="frame" x="120" y="30" width="198" height="19.333333333333329"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" red="0.098039215686274508" green="0.10980392156862745" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="Clw-WC-PU7" firstAttribute="leading" secondItem="ggI-bP-z9f" secondAttribute="trailing" constant="10" id="Brj-oE-kIe"/>
+                        <constraint firstAttribute="trailing" secondItem="fOR-oD-sbr" secondAttribute="trailing" constant="15" id="0wl-kn-PXz"/>
+                        <constraint firstItem="Clw-WC-PU7" firstAttribute="leading" secondItem="ggI-bP-z9f" secondAttribute="trailing" constant="15" id="Brj-oE-kIe"/>
                         <constraint firstItem="ggI-bP-z9f" firstAttribute="leading" secondItem="jma-zs-tAt" secondAttribute="leading" constant="15" id="Ie4-8b-56H"/>
-                        <constraint firstItem="JF7-iy-D0D" firstAttribute="top" secondItem="jma-zs-tAt" secondAttribute="top" constant="30" id="OSM-or-P0h"/>
-                        <constraint firstItem="Clw-WC-PU7" firstAttribute="top" secondItem="JF7-iy-D0D" secondAttribute="bottom" constant="5" id="e5W-jo-z49"/>
-                        <constraint firstItem="BPQ-H4-KFY" firstAttribute="leading" secondItem="ggI-bP-z9f" secondAttribute="trailing" constant="10" id="gSB-5V-TFi"/>
-                        <constraint firstItem="JF7-iy-D0D" firstAttribute="leading" secondItem="ggI-bP-z9f" secondAttribute="trailing" constant="5" id="hxr-Qo-0oL"/>
-                        <constraint firstItem="BPQ-H4-KFY" firstAttribute="top" secondItem="Clw-WC-PU7" secondAttribute="bottom" constant="5" id="nEf-ER-L0h"/>
+                        <constraint firstItem="fOR-oD-sbr" firstAttribute="leading" secondItem="ggI-bP-z9f" secondAttribute="trailing" constant="15" id="Nhl-zv-7oS"/>
+                        <constraint firstItem="Clw-WC-PU7" firstAttribute="top" secondItem="fOR-oD-sbr" secondAttribute="bottom" constant="5" id="Qod-Pw-XFA"/>
+                        <constraint firstItem="sCH-Iu-Ueo" firstAttribute="top" secondItem="Clw-WC-PU7" secondAttribute="bottom" constant="10" id="icd-Qo-DbY"/>
+                        <constraint firstItem="sCH-Iu-Ueo" firstAttribute="leading" secondItem="ggI-bP-z9f" secondAttribute="trailing" constant="15" id="lav-kw-akh"/>
                         <constraint firstAttribute="bottom" secondItem="ggI-bP-z9f" secondAttribute="bottom" constant="30" id="qsf-DN-6XR"/>
                         <constraint firstItem="ggI-bP-z9f" firstAttribute="top" secondItem="jma-zs-tAt" secondAttribute="top" constant="30" id="sFe-Ce-TDF"/>
                         <constraint firstAttribute="height" constant="150" id="tW7-dF-tI3"/>
-                        <constraint firstItem="Clw-WC-PU7" firstAttribute="leading" secondItem="ggI-bP-z9f" secondAttribute="trailing" constant="10" id="yiK-vO-d2P"/>
+                        <constraint firstItem="fOR-oD-sbr" firstAttribute="top" secondItem="jma-zs-tAt" secondAttribute="top" constant="30" id="ucM-l2-Mrq"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C5O-Da-xiW">
@@ -121,9 +116,9 @@
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" image="dollarsign.arrow.circlepath" catalog="system"/>
-                            <buttonConfiguration key="configuration" style="plain" image="dollarsign.arrow.circlepath" catalog="system">
-                                <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
-                            </buttonConfiguration>
+                            <connections>
+                                <action selector="handleExchangeButton:" destination="-1" eventType="touchUpInside" id="Nal-Je-A3l"/>
+                            </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WuH-jE-Cex">
                             <rect key="frame" x="211.66666666666666" y="48.666666666666686" width="106.33333333333334" height="3"/>
@@ -149,28 +144,27 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4SA-b9-3rW">
                     <rect key="frame" x="30" y="540" width="333" height="150"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dollarsign" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Hax-vo-hEt">
-                            <rect key="frame" x="15" y="29.666666666666664" width="90" height="90.666666666666686"/>
-                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hax-vo-hEt">
+                            <rect key="frame" x="15" y="30" width="90" height="90"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="Hax-vo-hEt" secondAttribute="height" multiplier="1:1" id="nd6-C7-86Y"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="US Dollar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRj-bP-Ql1">
-                            <rect key="frame" x="115" y="30" width="70.666666666666686" height="19.333333333333329"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose coin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRj-bP-Ql1">
+                            <rect key="frame" x="120" y="30" width="93.333333333333314" height="19.333333333333329"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ic-Vl-ybz">
-                            <rect key="frame" x="114.99999999999999" y="54.333333333333371" width="27.333333333333329" height="15.666666666666671"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ic-Vl-ybz">
+                            <rect key="frame" x="120" y="54.333333333333371" width="11.666666666666657" height="15.666666666666671"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" red="0.60784313729999995" green="0.61960784310000006" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$10,050,70" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A3k-6B-N2U">
-                            <rect key="frame" x="115" y="85" width="203" height="26.333333333333329"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KlL-rj-Qrt">
+                            <rect key="frame" x="120" y="80" width="0.0" height="0.0"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -178,17 +172,16 @@
                     </subviews>
                     <color key="backgroundColor" red="0.098039215686274508" green="0.10980392156862745" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="A3k-6B-N2U" secondAttribute="trailing" constant="15" id="1NP-5l-xlU"/>
                         <constraint firstItem="HRj-bP-Ql1" firstAttribute="top" secondItem="4SA-b9-3rW" secondAttribute="top" constant="30" id="6XI-S9-KQb"/>
-                        <constraint firstItem="HRj-bP-Ql1" firstAttribute="leading" secondItem="Hax-vo-hEt" secondAttribute="trailing" constant="10" id="ACz-yJ-QVG"/>
-                        <constraint firstItem="A3k-6B-N2U" firstAttribute="leading" secondItem="Hax-vo-hEt" secondAttribute="trailing" constant="10" id="HiW-rM-IGg"/>
+                        <constraint firstItem="HRj-bP-Ql1" firstAttribute="leading" secondItem="Hax-vo-hEt" secondAttribute="trailing" constant="15" id="ACz-yJ-QVG"/>
+                        <constraint firstItem="KlL-rj-Qrt" firstAttribute="leading" secondItem="Hax-vo-hEt" secondAttribute="trailing" constant="15" id="Ff6-0l-fBx"/>
+                        <constraint firstItem="KlL-rj-Qrt" firstAttribute="top" secondItem="5ic-Vl-ybz" secondAttribute="bottom" constant="10" id="R8e-Os-CfM"/>
                         <constraint firstItem="Hax-vo-hEt" firstAttribute="leading" secondItem="4SA-b9-3rW" secondAttribute="leading" constant="15" id="a1k-0P-b6H"/>
                         <constraint firstAttribute="bottom" secondItem="Hax-vo-hEt" secondAttribute="bottom" constant="30" id="ds3-MX-cKq"/>
                         <constraint firstItem="Hax-vo-hEt" firstAttribute="top" secondItem="4SA-b9-3rW" secondAttribute="top" constant="30" id="hD2-c8-vpj"/>
                         <constraint firstAttribute="height" constant="150" id="kJj-1D-MNn"/>
                         <constraint firstItem="5ic-Vl-ybz" firstAttribute="top" secondItem="HRj-bP-Ql1" secondAttribute="bottom" constant="5" id="kU5-ff-45W"/>
-                        <constraint firstItem="5ic-Vl-ybz" firstAttribute="leading" secondItem="Hax-vo-hEt" secondAttribute="trailing" constant="10" id="n1n-99-v3Y"/>
-                        <constraint firstItem="A3k-6B-N2U" firstAttribute="top" secondItem="5ic-Vl-ybz" secondAttribute="bottom" constant="15" id="yGO-mT-MWj"/>
+                        <constraint firstItem="5ic-Vl-ybz" firstAttribute="leading" secondItem="Hax-vo-hEt" secondAttribute="trailing" constant="15" id="n1n-99-v3Y"/>
                     </constraints>
                 </view>
             </subviews>
@@ -212,15 +205,9 @@
         </view>
     </objects>
     <resources>
-        <image name="bitcoinsign" catalog="system" width="85" height="128"/>
-        <image name="chevron.up.chevron.down" catalog="system" width="128" height="128"/>
-        <image name="dollarsign" catalog="system" width="89" height="128"/>
         <image name="dollarsign.arrow.circlepath" catalog="system" width="128" height="112"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

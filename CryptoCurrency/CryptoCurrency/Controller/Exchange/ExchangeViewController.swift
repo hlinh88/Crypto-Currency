@@ -11,13 +11,24 @@ final class ExchangeViewController: UIViewController {
 
     @IBOutlet private weak var coinView: UIView!
     @IBOutlet private weak var coinImageView: UIImageView!
+    @IBOutlet private weak var coinNameLabel: UILabel!
+    @IBOutlet private weak var coinSymbolLabel: UILabel!
+    @IBOutlet private weak var coinTextField: UITextField!
     @IBOutlet private weak var moneyView: UIView!
-    @IBOutlet private weak var coinButton: UIButton!
+    @IBOutlet private weak var moneyNameLabel: UILabel!
+    @IBOutlet private weak var moneySymbolLabel: UILabel!
     @IBOutlet private weak var moneyImageView: UIImageView!
+    @IBOutlet private weak var moneyPriceLabel: UILabel!
     @IBOutlet private weak var exchangeButton: UIButton!
+
+    private var currentCoinRate = 0.0
+    private var currentMoneyRate = 0.0
+    private var coinText = String.isEmpty
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configView()
+        self.hideKeyboardWhenTappedAround()
     }
 
     private func configView() {
@@ -26,26 +37,81 @@ final class ExchangeViewController: UIViewController {
         exchangeButton.roundButton()
         coinImageView.roundCorner()
         moneyImageView.roundCorner()
-        coinButton.contentEdgeInsets = UIEdgeInsets(top: LayerSettings.edgeInsets.rawValue,
-                                                    left: LayerSettings.edgeInsets.rawValue,
-                                                    bottom: LayerSettings.edgeInsets.rawValue,
-                                                    right: LayerSettings.edgeInsets.rawValue)
-        setupCoinButton()
+        coinView.addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                                  action: #selector(coinViewHandler)))
+        moneyView.addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                              action: #selector(moneyViewHandler)))
     }
 
-    private func setupCoinButton() {
-        let popUpButtonAction = { (_: UIAction) in
-            //TODO: Update later
+    @objc private func coinViewHandler() {
+        let coinVC = CoinsViewController()
+        coinVC.configStatus(isConvertedCoin: true)
+        coinVC.delegate = self
+        if let sheet = coinVC.sheetPresentationController {
+            sheet.detents = [.large()]
+            sheet.preferredCornerRadius = LayerSettings.radius.rawValue
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
         }
+        self.present(coinVC, animated: true)
+    }
 
-        coinButton.menu = UIMenu(children: [
-            UIAction(title: "Bitcoin", handler: popUpButtonAction),
-            UIAction(title: "Ethereum", handler: popUpButtonAction),
-            UIAction(title: "Quant", handler: popUpButtonAction),
-            UIAction(title: "Vinfast", handler: popUpButtonAction)
-        ])
-        coinButton.customizePopUpButton()
-        coinButton.showsMenuAsPrimaryAction = true
-        coinButton.changesSelectionAsPrimaryAction = true
+    @objc private func moneyViewHandler() {
+        let coinVC = CoinsViewController()
+        coinVC.configStatus(isConvertedCoin: false)
+        coinVC.delegate = self
+        if let sheet = coinVC.sheetPresentationController {
+            sheet.detents = [.large()]
+            sheet.preferredCornerRadius = LayerSettings.radius.rawValue
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+        }
+        self.present(coinVC, animated: true)
+    }
+
+    @IBAction private func handleTextFieldChanged(_ sender: UITextField) {
+        if let text = sender.text {
+            self.coinText = text
+        }
+    }
+
+    @IBAction private func handleExchangeButton(_ sender: UIButton) {
+        if currentCoinRate == 0.0 || currentMoneyRate == 0.0 || coinText == String.isEmpty {
+            self.popUpErrorAlert(message: "Please select a coin or input coin amount")
+        } else {
+            if let coinValue = Double(coinText) {
+                let convertedResult = currentMoneyRate / currentCoinRate * coinValue
+                let formattedResult = String(format: "%.2f", convertedResult)
+                moneyPriceLabel.text = formattedResult
+            }
+        }
+    }
+}
+
+extension ExchangeViewController: CoinsViewControllerDelegate {
+    func cellSelected(coin: Coin, isConvertedCoin: Bool) {
+        if let imageColor = coin.color {
+            isConvertedCoin ?
+            (self.coinImageView.backgroundColor = imageColor == String.blackColor
+            ? UIColor.white
+            : UIColor.init(hexString: imageColor))
+            : (self.moneyImageView.backgroundColor = imageColor == String.blackColor
+            ? UIColor.white
+            : UIColor.init(hexString: imageColor))
+        }
+        ViewManager.shared.setImagePNG(stringURL: coin.iconUrl,
+                                       imageView: isConvertedCoin ? coinImageView : moneyImageView,
+                                       viewController: ExchangeViewController())
+        isConvertedCoin ? (self.coinNameLabel.text = coin.name) : (self.moneyNameLabel.text = coin.name)
+
+        if isConvertedCoin {
+            if let coinRate = Double(coin.price) {
+                self.currentCoinRate = coinRate
+                self.coinSymbolLabel.text = "1 \(coin.symbol) = $\(String(format: "%.2f", coinRate))"
+            }
+        } else {
+            if let coinRate = Double(coin.price) {
+                self.currentMoneyRate = coinRate
+                self.moneySymbolLabel.text =  "1 \(coin.symbol) = $ \(String(format: "%.2f", coinRate))"
+            }
+        }
     }
 }
