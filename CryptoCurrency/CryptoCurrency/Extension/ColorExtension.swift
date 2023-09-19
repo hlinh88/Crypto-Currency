@@ -16,6 +16,18 @@ extension UIColor {
         return UIColor(red: 44/255, green: 46/255, blue: 52/255, alpha: 1.0)
     }()
 
+    static let chartBackgroundColor: UIColor = {
+        return UIColor(red: 25/255, green: 28/255, blue: 33/255, alpha: 1.0)
+    }()
+
+    static let chartFillTop: UIColor = {
+        return UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.8)
+    }()
+
+    static let chartFillBottom: UIColor = {
+        return UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.1)
+    }()
+
     convenience init(hexString: String) {
         let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int = UInt64()

@@ -33,8 +33,8 @@ final class APIManager {
         }
     }
 
-    func fetchCoinDetail(uuid: String, completion: @escaping (Coin) -> Void, errorHandler: @escaping () -> Void) {
-        if let url = URL(string: "\(Endpoint.coinDetailAPI.rawValue)\(uuid)") {
+    func fetchCoinDetail(uuid: String, timePeriod: String,  completion: @escaping (Coin) -> Void, errorHandler: @escaping () -> Void) {
+        if let url = URL(string: "\(Endpoint.coinDetailAPI.rawValue)\(uuid)?timePeriod=\(timePeriod)") {
             var request = URLRequest(url: url)
             request.addValue(Key.apiKey.rawValue, forHTTPHeaderField: "TRN-Api-Key")
             URLSession.shared.dataTask(with: url) { (data, _, _) in
