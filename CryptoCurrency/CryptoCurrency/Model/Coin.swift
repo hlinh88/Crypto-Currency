@@ -19,9 +19,10 @@ struct Coin: Codable {
     var marketCap: String?
     var volume24h: String?
     var supply: Supply?
+    var sparkline: [String?]?
 
     enum CodingKeys: String, CodingKey {
-        case uuid, symbol, name, color, iconUrl, price, change, description, marketCap, supply
+        case uuid, symbol, name, color, iconUrl, price, change, description, marketCap, supply, sparkline
         case volume24h = "24hVolume"
     }
 }

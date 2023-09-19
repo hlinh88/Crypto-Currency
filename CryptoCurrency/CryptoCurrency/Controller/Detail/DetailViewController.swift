@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import DGCharts
 
 final class DetailViewController: UIViewController {
     @IBOutlet private weak var coinImageView: UIImageView!
@@ -19,17 +20,124 @@ final class DetailViewController: UIViewController {
     @IBOutlet private weak var volume24hLabel: UILabel!
     @IBOutlet private weak var supplyLabel: UILabel!
     @IBOutlet private weak var changeRateLabel: UILabel!
+    @IBOutlet private weak var chartContainerView: UIView!
+    @IBOutlet private weak var todayButton: UIButton!
+    @IBOutlet private weak var weekButton: UIButton!
+    @IBOutlet private weak var monthButton: UIButton!
+    @IBOutlet private weak var threeMonthButton: UIButton!
+    @IBOutlet private weak var yearButton: UIButton!
+    @IBOutlet private weak var threeYearButton: UIButton!
 
     private var coinDetailDictionary: [String: String] = [:]
     private var isFollow = false
-
     var uuid: String?
     private var thisCoin: Coin?
+    private var currentButtonIndex = 0
+
+    private var values: [ChartDataEntry] = []
+
+    lazy var lineChartView: LineChartView = {
+        let chartView = LineChartView()
+        chartView.backgroundColor = UIColor.chartBackgroundColor
+        chartView.rightAxis.enabled = false
+        chartView.leftAxis.enabled = false
+        chartView.xAxis.enabled = false
+        chartView.legend.enabled = false
+
+        return chartView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         getCoinDetail()
+        getCoinSparkline(currentButtonIndex: currentButtonIndex)
         customizeView()
+    }
+
+    private func getCoinDetail() {
+        let timePeriod = "24h"
+        let queue = DispatchQueue(label: "getCoinDetailQueue", qos: .utility)
+        queue.async { [unowned self] in
+            if let uuid = self.uuid {
+                APIManager.shared.fetchCoinDetail(uuid: uuid, timePeriod: timePeriod, completion: { (coin: Coin) in
+                    self.passDetailToFavourite(uuid: coin.uuid,
+                                               name: coin.name,
+                                               symbol: coin.symbol,
+                                               iconUrl: coin.iconUrl,
+                                               color: coin.color ?? String.isEmpty,
+                                               price: coin.price)
+                    self.thisCoin = Coin(uuid: coin.uuid,
+                                         symbol: coin.symbol,
+                                         name: coin.name,
+                                         color: coin.color,
+                                         iconUrl: coin.iconUrl,
+                                         price: coin.price,
+                                         change: coin.change,
+                                         description: coin.description,
+                                         marketCap: coin.marketCap,
+                                         volume24h: coin.volume24h,
+                                         supply: coin.supply)
+
+                    self.checkFollowStatus()
+                    self.configDetailView()
+                }, errorHandler: {
+                    self.popUpErrorAlert(message: "Error fetching data")
+                })
+            }
+        }
+    }
+
+    private func getCoinSparkline(currentButtonIndex: Int) {
+        let timePeriod = convertIndexToTimePeriod(index: currentButtonIndex)
+        DispatchQueue.main.async { [unowned self] in
+            if let uuid = self.uuid {
+                APIManager.shared.fetchCoinDetail(uuid: uuid, timePeriod: timePeriod, completion: { (coin: Coin) in
+                    self.values = []
+                    if let sparkline = coin.sparkline {
+                        sparkline.enumerated().forEach { (index, value) in
+                            guard let value, let convertedValue = Double(value) else { return }
+                            self.values.append(ChartDataEntry(x: Double(index), y: convertedValue))
+                        }
+                    }
+                    self.addLineChartViewConstraints()
+                }, errorHandler: {
+                    self.popUpErrorAlert(message: "Error fetching data")
+                })
+            }
+        }
+    }
+
+    private func configChartData() {
+        let set = LineChartDataSet(entries: values)
+        set.mode = .linear
+        set.drawCirclesEnabled = false
+        set.lineWidth = LayerSettings.chartLineWidth.rawValue
+        set.setColor(UIColor.white)
+        let colorTop = UIColor.chartFillTop.cgColor
+        let colorBottom = UIColor.chartFillBottom.cgColor
+        let gradientColors = [colorTop, colorBottom] as CFArray
+        let colorLocations: [CGFloat] = [LayerSettings.colorLocationTop.rawValue, LayerSettings.colorLocationBottom.rawValue]
+        if let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColors, locations: colorLocations) {
+            set.fill = LinearGradientFill(gradient: gradient, angle: LayerSettings.angle.rawValue)
+        }
+        set.drawFilledEnabled = true
+        set.drawHorizontalHighlightIndicatorEnabled = false
+
+        let data = LineChartData(dataSet: set)
+        data.setDrawValues(false)
+        lineChartView.data = data
+    }
+
+    private func addLineChartViewConstraints() {
+        chartContainerView.addSubview(lineChartView)
+        lineChartView.translatesAutoresizingMaskIntoConstraints = false
+        lineChartView.center = chartContainerView.convert(chartContainerView.center, from: chartContainerView.superview)
+        lineChartView.widthAnchor.constraint(equalTo: chartContainerView.widthAnchor, multiplier: 1.0).isActive = true
+        lineChartView.heightAnchor.constraint(equalTo: chartContainerView.heightAnchor, multiplier: 1.0).isActive = true
+
+        lineChartView.animate(xAxisDuration: LayerSettings.chartAppearDuration.rawValue)
+
+        configChartData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -54,37 +162,6 @@ final class DetailViewController: UIViewController {
         coinDetailDictionary["iconUrl"] = iconUrl
         coinDetailDictionary["color"] = color
         coinDetailDictionary["price"] = price
-    }
-
-    private func getCoinDetail() {
-        let queue = DispatchQueue(label: "getCoinDetailQueue", qos: .utility)
-        queue.async { [unowned self] in
-            if let uuid = self.uuid {
-                APIManager.shared.fetchCoinDetail(uuid: uuid, completion: { (coin: Coin) in
-                    self.passDetailToFavourite(uuid: coin.uuid,
-                                               name: coin.name,
-                                               symbol: coin.symbol,
-                                               iconUrl: coin.iconUrl,
-                                               color: coin.color ?? String.isEmpty,
-                                               price: coin.price)
-                    self.thisCoin = Coin(uuid: coin.uuid,
-                                         symbol: coin.symbol,
-                                         name: coin.name,
-                                         color: coin.color,
-                                         iconUrl: coin.iconUrl,
-                                         price: coin.price,
-                                         change: coin.change,
-                                         description: coin.description,
-                                         marketCap: coin.marketCap,
-                                         volume24h: coin.volume24h,
-                                         supply: coin.supply)
-                    self.checkFollowStatus()
-                    self.configDetailView()
-                }, errorHandler: {
-                    self.popUpErrorAlert(message: "Error fetching data")
-                })
-            }
-        }
     }
 
     private func checkFollowStatus() {
@@ -138,6 +215,30 @@ final class DetailViewController: UIViewController {
         }
     }
 
+    private func configCurrentButtonIndex(currentButtonIndex: Int) {
+        let buttons = [todayButton, weekButton, monthButton, threeMonthButton, yearButton, threeYearButton]
+        buttons.enumerated().forEach { (index, button) in
+            button?.backgroundColor = index == currentButtonIndex ? UIColor.mainColor : UIColor.clear
+        }
+    }
+
+    private func convertIndexToTimePeriod(index: Int) -> String {
+        switch index {
+        case 1:
+            return "7d"
+        case 2:
+            return "30d"
+        case 3:
+            return "3m"
+        case 4:
+            return "1y"
+        case 5:
+            return "3y"
+        default:
+            return "24h"
+        }
+    }
+
     @IBAction func handleBackButton(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -153,5 +254,40 @@ final class DetailViewController: UIViewController {
             }
         }
         isFollow.toggle()
+    }
+
+    private func buttonHandler() {
+        configCurrentButtonIndex(currentButtonIndex: self.currentButtonIndex)
+        getCoinSparkline(currentButtonIndex: self.currentButtonIndex)
+    }
+
+    @IBAction private func handleTodayButton(_ sender: UIButton) {
+        self.currentButtonIndex = 0
+        buttonHandler()
+    }
+
+    @IBAction private func handleWeekButton(_ sender: UIButton) {
+        self.currentButtonIndex = 1
+        buttonHandler()
+    }
+
+    @IBAction private func handleMonthButton(_ sender: UIButton) {
+        self.currentButtonIndex = 2
+        buttonHandler()
+    }
+
+    @IBAction private func handleThreeMonthButton(_ sender: UIButton) {
+        self.currentButtonIndex = 3
+        buttonHandler()
+    }
+
+    @IBAction private func handleYearButton(_ sender: UIButton) {
+        self.currentButtonIndex = 4
+        buttonHandler()
+    }
+
+    @IBAction func handleThreeYearButton(_ sender: UIButton) {
+        self.currentButtonIndex = 5
+        buttonHandler()
     }
 }
