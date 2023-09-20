@@ -34,9 +34,9 @@ final class ExchangeViewController: UIViewController {
     private func configView() {
         coinView.layer.cornerRadius = LayerSettings.radius.rawValue
         moneyView.layer.cornerRadius = LayerSettings.radius.rawValue
-        exchangeButton.roundButton()
-        coinImageView.roundCorner()
-        moneyImageView.roundCorner()
+        exchangeButton.layer.cornerRadius = LayerSettings.radius.rawValue
+        coinImageView.layer.cornerRadius = LayerSettings.radius.rawValue
+        moneyImageView.layer.cornerRadius = LayerSettings.radius.rawValue
         coinView.addGestureRecognizer(UITapGestureRecognizer(target: self,
                                                                   action: #selector(coinViewHandler)))
         moneyView.addGestureRecognizer(UITapGestureRecognizer(target: self,
