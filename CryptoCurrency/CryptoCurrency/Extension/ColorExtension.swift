@@ -28,6 +28,22 @@ extension UIColor {
         return UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.1)
     }()
 
+    static let gradientColorTop: UIColor = {
+        return UIColor(red: 14/255, green: 139/255, blue: 255/255, alpha: 1)
+    }()
+
+    static let gradientColorTopMid: UIColor = {
+        return UIColor(red: 73/255, green: 134/255, blue: 255/255, alpha: 1)
+    }()
+
+    static let gradientColorBottomMid: UIColor = {
+        return UIColor(red: 126/255, green: 130/255, blue: 255/255, alpha: 1)
+    }()
+
+    static let gradientColorBottom: UIColor = {
+        return UIColor(red: 180/255, green: 125/255, blue: 255/255, alpha: 1)
+    }()
+
     convenience init(hexString: String) {
         let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int = UInt64()

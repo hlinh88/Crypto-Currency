@@ -10,9 +10,12 @@ import UIKit
 final class FavouriteViewController: UIViewController {
     @IBOutlet private weak var favouriteTableView: UITableView!
 
+    private var refreshControl = RefreshManager.shared.setupRefreshControl(#selector(refresh(_:)))
+
     override func viewDidLoad() {
         super.viewDidLoad()
         registerTableView()
+        favouriteTableView.refreshControl = refreshControl
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -24,6 +27,11 @@ final class FavouriteViewController: UIViewController {
                                     forCellReuseIdentifier: "favouriteCellId")
         favouriteTableView.delegate = self
         favouriteTableView.dataSource = self
+    }
+
+    @objc private func refresh(_ sender: AnyObject) {
+        CoreDataManager.shared.getAllItems()
+        refreshControl.endRefreshing()
     }
 }
 

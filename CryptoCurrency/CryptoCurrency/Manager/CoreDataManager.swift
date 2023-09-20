@@ -27,6 +27,7 @@ class CoreDataManager {
     func getAllItems() {
         let context = persistentContainer.viewContext
         do {
+            FavouriteManager.favourites = []
             let results: NSArray = try context.fetch(request) as NSArray
             for result in results {
                 if let fav = result as? Favourite {

@@ -39,6 +39,11 @@
 		5ED7111A2AB05F97001F936F /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED711192AB05F97001F936F /* APIManager.swift */; };
 		5ED7111C2AB064CE001F936F /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED7111B2AB064CE001F936F /* Coin.swift */; };
 		5EE049382AB0774300810282 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE049372AB0774300810282 /* Key.swift */; };
+		5EE0A6302ABA85140077307B /* RefreshManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE0A62F2ABA85140077307B /* RefreshManager.swift */; };
+		5EE0A6322ABA90CE0077307B /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE0A6312ABA90CE0077307B /* TableViewExtension.swift */; };
+		5EE0A6342ABA96C80077307B /* InternetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE0A6332ABA96C80077307B /* InternetManager.swift */; };
+		5EE0A6382ABA98600077307B /* InternetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE0A6362ABA98600077307B /* InternetViewController.swift */; };
+		5EE0A6392ABA98600077307B /* InternetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EE0A6372ABA98600077307B /* InternetViewController.xib */; };
 		5EE4C1C12AB3FE34005DCFEF /* ExchangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EE4C1C02AB3FE34005DCFEF /* ExchangeViewController.xib */; };
 		5EE4C1C32AB42DF4005DCFEF /* ImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE4C1C22AB42DF4005DCFEF /* ImageViewExtension.swift */; };
 		5EE4C1C52AB42E31005DCFEF /* LayerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE4C1C42AB42E31005DCFEF /* LayerSettings.swift */; };
@@ -90,6 +95,11 @@
 		5ED711192AB05F97001F936F /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		5ED7111B2AB064CE001F936F /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		5EE049372AB0774300810282 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
+		5EE0A62F2ABA85140077307B /* RefreshManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshManager.swift; sourceTree = "<group>"; };
+		5EE0A6312ABA90CE0077307B /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
+		5EE0A6332ABA96C80077307B /* InternetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetManager.swift; sourceTree = "<group>"; };
+		5EE0A6362ABA98600077307B /* InternetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetViewController.swift; sourceTree = "<group>"; };
+		5EE0A6372ABA98600077307B /* InternetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InternetViewController.xib; sourceTree = "<group>"; };
 		5EE4C1C02AB3FE34005DCFEF /* ExchangeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExchangeViewController.xib; sourceTree = "<group>"; };
 		5EE4C1C22AB42DF4005DCFEF /* ImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewExtension.swift; sourceTree = "<group>"; };
 		5EE4C1C42AB42E31005DCFEF /* LayerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerSettings.swift; sourceTree = "<group>"; };
@@ -143,6 +153,7 @@
 		5E0E7C6C2AB00C1B00BB6C5A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5EE0A6352ABA98480077307B /* Internet */,
 				5EB93E162AB883160003C97E /* Coins */,
 				5E616CCD2AB1CD5000DED86E /* Detail */,
 				5E616CCC2AB1CD4000DED86E /* News */,
@@ -191,6 +202,7 @@
 				5EE4C1C22AB42DF4005DCFEF /* ImageViewExtension.swift */,
 				5E1F92942AB5AFC300BB3BA0 /* TextFieldExtension.swift */,
 				5E1F92A12AB7F89000BB3BA0 /* StringExtension.swift */,
+				5EE0A6312ABA90CE0077307B /* TableViewExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -304,8 +316,19 @@
 				5EF03CC12AB363D800A7CF72 /* ViewManager.swift */,
 				5E1F92A82AB7FA5200BB3BA0 /* CoreDataManager.swift */,
 				5E1F92AA2AB8534300BB3BA0 /* FavouriteManager.swift */,
+				5EE0A62F2ABA85140077307B /* RefreshManager.swift */,
+				5EE0A6332ABA96C80077307B /* InternetManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		5EE0A6352ABA98480077307B /* Internet */ = {
+			isa = PBXGroup;
+			children = (
+				5EE0A6362ABA98600077307B /* InternetViewController.swift */,
+				5EE0A6372ABA98600077307B /* InternetViewController.xib */,
+			);
+			path = Internet;
 			sourceTree = "<group>";
 		};
 		5EE4C1C82AB4344F005DCFEF /* News */ = {
@@ -411,6 +434,7 @@
 				5EE4C1C12AB3FE34005DCFEF /* ExchangeViewController.xib in Resources */,
 				5EB93E1F2AB884D00003C97E /* CoinsViewCell.xib in Resources */,
 				5EB93E1A2AB883870003C97E /* CoinsViewController.xib in Resources */,
+				5EE0A6392ABA98600077307B /* InternetViewController.xib in Resources */,
 				5EF03CB42AB2F14300A7CF72 /* FavouriteViewController.xib in Resources */,
 				5EF03CBE2AB302E500A7CF72 /* DetailViewController.xib in Resources */,
 				5E616CD62AB1CF5D00DED86E /* StockViewCell.xib in Resources */,
@@ -474,6 +498,7 @@
 				5E616CB72AB1A14600DED86E /* TabBarController.swift in Sources */,
 				5EB93E1E2AB884D00003C97E /* CoinsViewCell.swift in Sources */,
 				5EF03CB92AB2F2B500A7CF72 /* FavouriteViewCell.swift in Sources */,
+				5EE0A6342ABA96C80077307B /* InternetManager.swift in Sources */,
 				5ED711172AB05E01001F936F /* Endpoint.swift in Sources */,
 				5ED7111A2AB05F97001F936F /* APIManager.swift in Sources */,
 				5E0E7C742AB00DAF00BB6C5A /* ExchangeViewController.swift in Sources */,
@@ -495,12 +520,15 @@
 				5EE4C1C52AB42E31005DCFEF /* LayerSettings.swift in Sources */,
 				5E1F92AB2AB8534300BB3BA0 /* FavouriteManager.swift in Sources */,
 				5EF03CBC2AB2F93000A7CF72 /* ViewExtension.swift in Sources */,
+				5EE0A6302ABA85140077307B /* RefreshManager.swift in Sources */,
 				5E7EF7EC2AAF22C600F8386A /* CryptoCurrency.xcdatamodeld in Sources */,
+				5EE0A6322ABA90CE0077307B /* TableViewExtension.swift in Sources */,
 				5EE4C1CB2AB43462005DCFEF /* NewsViewCell.swift in Sources */,
 				5ED7111C2AB064CE001F936F /* Coin.swift in Sources */,
 				5EB93E192AB883870003C97E /* CoinsViewController.swift in Sources */,
 				5E1F92A92AB7FA5200BB3BA0 /* CoreDataManager.swift in Sources */,
 				5E0E7C722AB00D9900BB6C5A /* DetailViewController.swift in Sources */,
+				5EE0A6382ABA98600077307B /* InternetViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
