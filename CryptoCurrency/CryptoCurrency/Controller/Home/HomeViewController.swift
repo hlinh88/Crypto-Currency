@@ -17,6 +17,8 @@ final class HomeViewController: UIViewController {
     private var isSearching = false
     private var categoryId = 0
     private var isFirstTimeLoading = true
+    private var refreshControl = RefreshManager.shared.setupRefreshControl(#selector(refresh(_:)))
+    private var defaultLoad = 50
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,9 +64,31 @@ final class HomeViewController: UIViewController {
         }
     }
 
+    private func loadMoreCoins() {
+        let queue = DispatchQueue(label: "loadMoreQueue", qos: .utility)
+        queue.async { [unowned self] in
+            APIManager.shared.fetchLoadMoreCoin(loadMore: String(defaultLoad), completion: { (coinsList: [Coin]) in
+                self.coins = []
+                _ = coinsList.map { coin in
+                    self.coins.append(Coin(uuid: coin.uuid,
+                                           symbol: coin.symbol,
+                                           name: coin.name,
+                                           color: coin.color,
+                                           iconUrl: coin.iconUrl,
+                                           price: coin.price,
+                                           change: coin.change))
+                }
+                self.stockTableView.reloadData()
+            }, errorHandler: {
+                self.popUpErrorAlert(message: "Error fetching API")
+            })
+        }
+    }
+
     private func customizeView() {
         setupPopUpButton()
         searchTextField.customizeSearch()
+        stockTableView.refreshControl = refreshControl
     }
 
     private func registerTableView() {
@@ -131,11 +155,25 @@ final class HomeViewController: UIViewController {
             stockTableView.reloadData()
         }
     }
+
+    @objc private func refresh(_ sender: AnyObject) {
+        getCoinRanking(categoryId: categoryId)
+        refreshControl.endRefreshing()
+    }
 }
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearching { return searchCoins.count } else { return coins.count }
+    }
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        tableView.addLoading(indexPath) {
+            let loadStep = 10
+            self.defaultLoad += loadStep
+            self.loadMoreCoins()
+            tableView.stopLoading()
+        }
     }
 }
 

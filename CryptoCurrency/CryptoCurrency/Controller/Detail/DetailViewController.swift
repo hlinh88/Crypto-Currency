@@ -175,6 +175,7 @@ final class DetailViewController: UIViewController {
     private func customizeView() {
         coinImageView.layer.cornerRadius = LayerSettings.radius.rawValue
         followButton.layer.cornerRadius = LayerSettings.radius.rawValue
+        configCurrentButtonIndex(currentButtonIndex: currentButtonIndex)
     }
 
     private func configDetailView() {
@@ -182,7 +183,7 @@ final class DetailViewController: UIViewController {
             ViewManager.shared.setImagePNG(stringURL: iconURL, imageView: coinImageView, viewController: self)
         }
         if let imageColor = thisCoin?.color {
-            coinImageView.backgroundColor = imageColor == "#000000"
+            coinImageView.backgroundColor = imageColor == String.blackColor
             ? UIColor.white
             : UIColor.init(hexString: imageColor)
         }
@@ -219,6 +220,7 @@ final class DetailViewController: UIViewController {
         let buttons = [todayButton, weekButton, monthButton, threeMonthButton, yearButton, threeYearButton]
         buttons.enumerated().forEach { (index, button) in
             button?.backgroundColor = index == currentButtonIndex ? UIColor.mainColor : UIColor.clear
+            button?.layer.cornerRadius = LayerSettings.radius.rawValue
         }
     }
 

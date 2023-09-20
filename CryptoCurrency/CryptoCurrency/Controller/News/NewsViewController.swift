@@ -11,10 +11,13 @@ final class NewsViewController: UIViewController {
     @IBOutlet private weak var newsTableView: UITableView!
 
     private var news = [News]()
+    private var refreshControl = RefreshManager.shared.setupRefreshControl(#selector(refresh(_:)))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         registerTableView()
         getNews()
+        newsTableView.refreshControl = refreshControl
     }
 
     private func getNews() {
@@ -39,6 +42,11 @@ final class NewsViewController: UIViewController {
         newsTableView.register(UINib(nibName: "NewsViewCell", bundle: nil), forCellReuseIdentifier: "newsCellId")
         newsTableView.delegate = self
         newsTableView.dataSource = self
+    }
+
+    @objc private func refresh(_ sender: AnyObject) {
+        getNews()
+        refreshControl.endRefreshing()
     }
 }
 
