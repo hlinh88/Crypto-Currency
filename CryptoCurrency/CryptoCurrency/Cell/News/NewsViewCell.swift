@@ -42,7 +42,7 @@ final class NewsViewCell: UITableViewCell {
                                                                   action: #selector(newsStackViewClicked)))
     }
 
-    @objc func newsStackViewClicked() {
+    @objc private func newsStackViewClicked() {
         guard let url = URL(string: self.url) else { return }
         UIApplication.shared.open(url)
     }

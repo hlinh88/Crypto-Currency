@@ -13,6 +13,7 @@ final class DetailViewController: UIViewController {
     @IBOutlet private weak var coinNameLabel: UILabel!
     @IBOutlet private weak var coinPriceLabel: UILabel!
     @IBOutlet private weak var coinDesLabel: UILabel!
+    @IBOutlet private weak var linkLabel: UILabel!
     @IBOutlet private weak var coinSymbolLabel: UILabel!
     @IBOutlet private weak var backButton: UIButton!
     @IBOutlet private weak var followButton: UIButton!
@@ -39,9 +40,22 @@ final class DetailViewController: UIViewController {
     lazy var lineChartView: LineChartView = {
         let chartView = LineChartView()
         chartView.backgroundColor = UIColor.chartBackgroundColor
+
+        let yAxis = chartView.leftAxis
+        yAxis.labelFont = .boldSystemFont(ofSize: 12)
+        yAxis.labelTextColor = UIColor.white
+        yAxis.axisLineColor = UIColor.white
+        yAxis.axisLineWidth = LayerSettings.chartLineWidth.rawValue
+        yAxis.labelPosition = .outsideChart
+
+        let xAxis = chartView.xAxis
+        xAxis.labelPosition = .bottom
+        xAxis.labelFont = .boldSystemFont(ofSize: 12)
+        xAxis.labelTextColor = UIColor.white
+        xAxis.axisLineColor = UIColor.white
+        xAxis.axisLineWidth = LayerSettings.chartLineWidth.rawValue
+
         chartView.rightAxis.enabled = false
-        chartView.leftAxis.enabled = false
-        chartView.xAxis.enabled = false
         chartView.legend.enabled = false
 
         return chartView
@@ -76,7 +90,8 @@ final class DetailViewController: UIViewController {
                                          description: coin.description,
                                          marketCap: coin.marketCap,
                                          volume24h: coin.volume24h,
-                                         supply: coin.supply)
+                                         supply: coin.supply,
+                                         websiteUrl: coin.websiteUrl)
 
                     self.checkFollowStatus()
                     self.configDetailView()
@@ -176,6 +191,19 @@ final class DetailViewController: UIViewController {
         coinImageView.layer.cornerRadius = LayerSettings.radius.rawValue
         followButton.layer.cornerRadius = LayerSettings.radius.rawValue
         configCurrentButtonIndex(currentButtonIndex: currentButtonIndex)
+        let underlineAttribute = [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.thick.rawValue]
+        let underlineAttributedString = NSAttributedString(string: "StringWithUnderLine", attributes: underlineAttribute)
+        linkLabel.attributedText = underlineAttributedString
+        linkLabel.isUserInteractionEnabled = true
+        linkLabel.addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                                  action: #selector(linkLabelClicked)))
+    }
+
+    @objc private func linkLabelClicked() {
+        if let url = thisCoin?.websiteUrl {
+            guard let url = URL(string: url) else { return }
+            UIApplication.shared.open(url)
+        }
     }
 
     private func configDetailView() {
@@ -189,6 +217,7 @@ final class DetailViewController: UIViewController {
         }
         coinNameLabel.text = thisCoin?.name
         coinSymbolLabel.text = thisCoin?.symbol
+        linkLabel.text = thisCoin?.websiteUrl
         if let price = thisCoin?.price {
             if let decimal = Double(price) {
                 coinPriceLabel.text = "$\(String(format: "%.2f", decimal))"
