@@ -23,15 +23,11 @@ final class NewsViewController: UIViewController {
     private func getNews() {
         let queue = DispatchQueue(label: "getNewsQueue", qos: .utility)
         queue.async { [unowned self] in
-            APIManager.shared.fetchNews(completion: { (newsList: [News]) in
-                _ = newsList.map { new in
-                    self.news.append(News(articleTitle: new.articleTitle,
-                                          articleUrl: new.articleUrl,
-                                          articlePhotoUrl: new.articlePhotoUrl,
-                                          source: new.source,
-                                          postTimeUtc: new.postTimeUtc))
+            APIManager.shared.fetchNews(completion: { (news: [News]) in
+                self.news = news
+                DispatchQueue.main.async { [unowned self] in
+                    self.newsTableView.reloadData()
                 }
-                self.newsTableView.reloadData()
             }, errorHandler: {
                 self.popUpErrorAlert(message: "Error fetching News API")
             })
@@ -44,7 +40,8 @@ final class NewsViewController: UIViewController {
         newsTableView.dataSource = self
     }
 
-    @objc private func refresh(_ sender: AnyObject) {
+    @objc 
+    private func refresh(_ sender: AnyObject) {
         getNews()
         refreshControl.endRefreshing()
     }
