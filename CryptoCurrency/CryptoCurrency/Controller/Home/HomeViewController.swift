@@ -8,14 +8,14 @@
 import UIKit
 
 final class HomeViewController: UIViewController {
-    @IBOutlet private weak var searchTextField: UITextField!
-    @IBOutlet private weak var popUpButton: UIButton!
-    @IBOutlet private weak var stockTableView: UITableView!
+    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var popUpButton: UIButton!
+    @IBOutlet weak var stockTableView: UITableView!
 
-    private var coins = [Coin]()
+    var coins = [Coin]()
     private var searchCoins = [Coin]()
     private var isSearching = false
-    private var categoryId = 0
+    var categoryId = 0
     private var isFirstTimeLoading = true
     private var refreshControl = RefreshManager.shared.setupRefreshControl(#selector(refresh(_:)))
     private var defaultLoad = 50
@@ -42,7 +42,7 @@ final class HomeViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
-    private func getCoinRanking(categoryId: Int) {
+    func getCoinRanking(categoryId: Int) {
         let orderBy = matchIdWithOrderBy(categoryId: categoryId)
         let queue = DispatchQueue(label: "getCoinRankingQueue", qos: .utility)
         queue.async { [unowned self] in
@@ -58,7 +58,7 @@ final class HomeViewController: UIViewController {
         }
     }
 
-    private func loadMoreCoins() {
+    func loadMoreCoins() {
         let queue = DispatchQueue(label: "loadMoreQueue", qos: .utility)
         queue.async { [unowned self] in
             APIManager.shared.fetchLoadMoreCoin(loadMore: String(defaultLoad), completion: { (coins: [Coin]) in
@@ -85,24 +85,24 @@ final class HomeViewController: UIViewController {
         stockTableView.dataSource = self
     }
 
-    private func setupPopUpButton() {
-        func popUpButtonAction(id: Int) {
-            self.categoryId = id
-            getCoinRanking(categoryId: categoryId)
-        }
+    func popUpButtonAction(id: Int) {
+        self.categoryId = id
+        getCoinRanking(categoryId: categoryId)
+    }
 
+    func setupPopUpButton() {
         popUpButton.menu = UIMenu(children: [
             UIAction(title: "Top Price") { _ in
-                popUpButtonAction(id: self.getCategoryId(categoryName: "price"))
+                self.popUpButtonAction(id: self.getCategoryId(categoryName: "price"))
             },
             UIAction(title: "Top Market Cap") { _ in
-                popUpButtonAction(id: self.getCategoryId(categoryName: "marketCap"))
+                self.popUpButtonAction(id: self.getCategoryId(categoryName: "marketCap"))
             },
             UIAction(title: "Top 24h Volume") { _ in
-                popUpButtonAction(id: self.getCategoryId(categoryName: "volume"))
+                self.popUpButtonAction(id: self.getCategoryId(categoryName: "volume"))
             },
             UIAction(title: "Top Change") { _ in
-                popUpButtonAction(id: self.getCategoryId(categoryName: "change"))
+                self.popUpButtonAction(id: self.getCategoryId(categoryName: "change"))
             }
         ])
         popUpButton.customizePopUpButton()
@@ -110,7 +110,7 @@ final class HomeViewController: UIViewController {
         popUpButton.changesSelectionAsPrimaryAction = true
     }
 
-    private func getCategoryId(categoryName: String) -> Int {
+    func getCategoryId(categoryName: String) -> Int {
         switch categoryName {
         case "marketCap":
             return 1
@@ -123,7 +123,7 @@ final class HomeViewController: UIViewController {
         }
     }
 
-    private func matchIdWithOrderBy(categoryId: Int) -> String {
+    func matchIdWithOrderBy(categoryId: Int) -> String {
         switch categoryId {
         case 1:
             return "marketCap"
@@ -136,7 +136,7 @@ final class HomeViewController: UIViewController {
         }
     }
 
-    @IBAction private func searchHandler(_ sender: UITextField) {
+    @IBAction func searchHandler(_ sender: UITextField) {
         if let searchText = sender.text {
             searchCoins = coins.filter({ $0.name.lowercased().prefix(searchText.count) == searchText.lowercased() })
             isSearching = searchText == String.isEmpty ? false : true
@@ -145,7 +145,7 @@ final class HomeViewController: UIViewController {
     }
 
     @objc 
-    private func refresh(_ sender: AnyObject) {
+    func refresh(_ sender: AnyObject) {
         getCoinRanking(categoryId: categoryId)
         refreshControl.endRefreshing()
     }
@@ -182,7 +182,7 @@ extension HomeViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
-        detailVC.uuid = coins[indexPath.row].uuid
+        detailVC.setUuid(uuid: coins[indexPath.row].uuid)
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }

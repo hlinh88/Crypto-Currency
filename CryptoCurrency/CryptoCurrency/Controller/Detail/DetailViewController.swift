@@ -15,25 +15,25 @@ final class DetailViewController: UIViewController {
     @IBOutlet private weak var coinDesLabel: UILabel!
     @IBOutlet private weak var linkLabel: UILabel!
     @IBOutlet private weak var coinSymbolLabel: UILabel!
-    @IBOutlet private weak var backButton: UIButton!
-    @IBOutlet private weak var followButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var followButton: UIButton!
     @IBOutlet private weak var marketCapLabel: UILabel!
     @IBOutlet private weak var volume24hLabel: UILabel!
     @IBOutlet private weak var supplyLabel: UILabel!
     @IBOutlet private weak var changeRateLabel: UILabel!
     @IBOutlet private weak var chartContainerView: UIView!
-    @IBOutlet private weak var todayButton: UIButton!
-    @IBOutlet private weak var weekButton: UIButton!
-    @IBOutlet private weak var monthButton: UIButton!
-    @IBOutlet private weak var threeMonthButton: UIButton!
-    @IBOutlet private weak var yearButton: UIButton!
-    @IBOutlet private weak var threeYearButton: UIButton!
+    @IBOutlet weak var todayButton: UIButton!
+    @IBOutlet weak var weekButton: UIButton!
+    @IBOutlet weak var monthButton: UIButton!
+    @IBOutlet weak var threeMonthButton: UIButton!
+    @IBOutlet weak var yearButton: UIButton!
+    @IBOutlet weak var threeYearButton: UIButton!
 
     private var coinDetailDictionary: [String: String] = [:]
     private var isFollow = false
-    var uuid: String?
-    private var thisCoin: Coin?
-    private var currentButtonIndex = 0
+    private var uuid = String.isEmpty
+    var thisCoin: Coin?
+    var currentButtonIndex = 0
 
     private var values: [ChartDataEntry] = []
 
@@ -68,43 +68,45 @@ final class DetailViewController: UIViewController {
         customizeView()
     }
 
+    func setUuid(uuid: String) {
+        self.uuid = uuid
+    }
+
     private func getCoinDetail() {
         let timePeriod = "24h"
         let queue = DispatchQueue(label: "getCoinDetailQueue", qos: .utility)
         queue.async { [unowned self] in
-            if let uuid = self.uuid {
-                APIManager.shared.fetchCoinDetail(uuid: uuid, timePeriod: timePeriod, completion: { (coin: Coin) in
-                    self.passDetailToFavourite(uuid: coin.uuid,
-                                               name: coin.name,
-                                               symbol: coin.symbol,
-                                               iconUrl: coin.iconUrl,
-                                               color: coin.color ?? String.isEmpty,
-                                               price: coin.price)
-                    self.thisCoin = coin
-                    self.checkFollowStatus()
-                    self.configDetailView()
-                }, errorHandler: {
-                    self.popUpErrorAlert(message: "Error fetching data")
-                })
-            }
+            APIManager.shared.fetchCoinDetail(uuid: uuid, timePeriod: timePeriod, completion: { (coin: Coin) in
+                self.passDetailToFavourite(uuid: coin.uuid,
+                                           name: coin.name,
+                                           symbol: coin.symbol,
+                                           iconUrl: coin.iconUrl,
+                                           color: coin.color ?? String.isEmpty,
+                                           price: coin.price)
+                self.thisCoin = coin
+                self.checkFollowStatus()
+                self.configDetailView()
+            }, errorHandler: {
+                self.popUpErrorAlert(message: "Error fetching data")
+            })
         }
     }
 
     private func getCoinSparkline(currentButtonIndex: Int) {
         let timePeriod = convertIndexToTimePeriod(index: currentButtonIndex)
-        DispatchQueue.main.async { [unowned self] in
-            if let uuid = self.uuid {
+        DispatchQueue.main.async { [weak self] in
+            if let uuid = self?.uuid {
                 APIManager.shared.fetchCoinDetail(uuid: uuid, timePeriod: timePeriod, completion: { (coin: Coin) in
-                    self.values = []
+                    self?.values = []
                     if let sparkline = coin.sparkline {
                         sparkline.enumerated().forEach { (index, value) in
                             guard let value, let convertedValue = Double(value) else { return }
-                            self.values.append(ChartDataEntry(x: Double(index), y: convertedValue))
+                            self?.values.append(ChartDataEntry(x: Double(index), y: convertedValue))
                         }
                     }
-                    self.addLineChartViewConstraints()
+                    self?.addLineChartViewConstraints()
                 }, errorHandler: {
-                    self.popUpErrorAlert(message: "Error fetching data")
+                    self?.popUpErrorAlert(message: "Error fetching data")
                 })
             }
         }
@@ -187,8 +189,8 @@ final class DetailViewController: UIViewController {
                                                               action: #selector(linkLabelClicked)))
     }
 
-    @objc 
-    private func linkLabelClicked() {
+    @objc
+    func linkLabelClicked() {
         guard let urlString = thisCoin?.websiteUrl,
               let url = URL(string: urlString) else {
             return
@@ -235,7 +237,7 @@ final class DetailViewController: UIViewController {
         }
     }
 
-    private func configCurrentButtonIndex(currentButtonIndex: Int) {
+    func configCurrentButtonIndex(currentButtonIndex: Int) {
         let buttons = [todayButton, weekButton, monthButton, threeMonthButton, yearButton, threeYearButton]
         buttons.enumerated().forEach { (index, button) in
             button?.backgroundColor = index == currentButtonIndex ? UIColor.mainColor : UIColor.clear
@@ -264,7 +266,7 @@ final class DetailViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
 
-    @IBAction private func handleFollowButton(_ sender: UIButton) {
+    @IBAction func handleFollowButton(_ sender: UIButton) {
         followButton.backgroundColor = isFollow ? UIColor.mainColor : UIColor.gray
         followButton.setTitle(isFollow ? "Follow" : "Following", for: .normal)
         if let uuid = thisCoin?.uuid {
@@ -282,27 +284,27 @@ final class DetailViewController: UIViewController {
         getCoinSparkline(currentButtonIndex: self.currentButtonIndex)
     }
 
-    @IBAction private func handleTodayButton(_ sender: UIButton) {
+    @IBAction func handleTodayButton(_ sender: UIButton) {
         self.currentButtonIndex = 0
         buttonHandler()
     }
 
-    @IBAction private func handleWeekButton(_ sender: UIButton) {
+    @IBAction func handleWeekButton(_ sender: UIButton) {
         self.currentButtonIndex = 1
         buttonHandler()
     }
 
-    @IBAction private func handleMonthButton(_ sender: UIButton) {
+    @IBAction func handleMonthButton(_ sender: UIButton) {
         self.currentButtonIndex = 2
         buttonHandler()
     }
 
-    @IBAction private func handleThreeMonthButton(_ sender: UIButton) {
+    @IBAction func handleThreeMonthButton(_ sender: UIButton) {
         self.currentButtonIndex = 3
         buttonHandler()
     }
 
-    @IBAction private func handleYearButton(_ sender: UIButton) {
+    @IBAction func handleYearButton(_ sender: UIButton) {
         self.currentButtonIndex = 4
         buttonHandler()
     }

@@ -9,6 +9,7 @@ import Foundation
 
 struct CoinRankingResponse: Codable {
     var data: CoinRankingItem
+    var status: String
 }
 
 struct CoinRankingItem: Codable {

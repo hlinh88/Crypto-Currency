@@ -13,13 +13,13 @@ final class ExchangeViewController: UIViewController {
     @IBOutlet private weak var coinImageView: UIImageView!
     @IBOutlet private weak var coinNameLabel: UILabel!
     @IBOutlet private weak var coinSymbolLabel: UILabel!
-    @IBOutlet private weak var coinTextField: UITextField!
+    @IBOutlet weak var coinTextField: UITextField!
     @IBOutlet private weak var moneyView: UIView!
     @IBOutlet private weak var moneyNameLabel: UILabel!
     @IBOutlet private weak var moneySymbolLabel: UILabel!
     @IBOutlet private weak var moneyImageView: UIImageView!
     @IBOutlet private weak var moneyPriceLabel: UILabel!
-    @IBOutlet private weak var exchangeButton: UIButton!
+    @IBOutlet weak var exchangeButton: UIButton!
 
     private var currentCoinRate = 0.0
     private var currentMoneyRate = 0.0
@@ -29,6 +29,14 @@ final class ExchangeViewController: UIViewController {
         super.viewDidLoad()
         configView()
         self.hideKeyboardWhenTappedAround()
+    }
+
+    func setCurrentCoinRate(rate: Double) {
+        self.currentCoinRate = rate
+    }
+
+    func setCurrentMoneyRate(rate: Double) {
+        self.currentMoneyRate = rate
     }
 
     private func configView() {
@@ -55,7 +63,7 @@ final class ExchangeViewController: UIViewController {
         self.present(coinVC, animated: true)
     }
 
-    @objc private func moneyViewHandler() {
+    @objc func moneyViewHandler() {
         let coinVC = CoinsViewController()
         coinVC.configStatus(isConvertedCoin: false)
         coinVC.delegate = self
@@ -67,18 +75,18 @@ final class ExchangeViewController: UIViewController {
         self.present(coinVC, animated: true)
     }
 
-    @IBAction private func handleTextFieldChanged(_ sender: UITextField) {
+    @IBAction func handleTextFieldChanged(_ sender: UITextField) {
         if let text = sender.text {
             self.coinText = text
         }
     }
 
-    @IBAction private func handleExchangeButton(_ sender: UIButton) {
+    @IBAction func handleExchangeButton(_ sender: UIButton) {
         if currentCoinRate == 0.0 || currentMoneyRate == 0.0 || coinText == String.isEmpty {
             self.popUpErrorAlert(message: "Please select a coin or input coin amount")
         } else {
             if let coinValue = Double(coinText) {
-                let convertedResult = currentMoneyRate / currentCoinRate * coinValue
+                let convertedResult = currentCoinRate * coinValue / currentMoneyRate
                 let formattedResult = String(format: "%.2f", convertedResult)
                 moneyPriceLabel.text = formattedResult
             }

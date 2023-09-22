@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -98,28 +99,31 @@
                     <rect key="frame" x="30" y="410" width="333" height="100"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r2T-bQ-nKN">
-                            <rect key="frame" x="15" y="48.666666666666686" width="109" height="3"/>
+                            <rect key="frame" x="14.999999999999996" y="48.666666666666686" width="61.666666666666657" height="3"/>
                             <color key="backgroundColor" red="0.4431372549" green="0.36470588240000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="3" id="aHI-Rp-dnn"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RVG-kM-2C7">
-                            <rect key="frame" x="144" y="27.666666666666686" width="45" height="45"/>
+                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RVG-kM-2C7">
+                            <rect key="frame" x="106.66666666666666" y="30" width="120" height="40"/>
                             <color key="backgroundColor" red="0.4431372549" green="0.36470588240000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="RVG-kM-2C7" secondAttribute="height" multiplier="1:1" id="6vC-Ju-wbx"/>
-                                <constraint firstAttribute="width" constant="45" id="PKh-1b-8TT"/>
+                                <constraint firstAttribute="width" constant="120" id="3hF-U1-oIe"/>
+                                <constraint firstAttribute="height" constant="40" id="How-Od-hHD"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" backgroundImage="exchanging"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <inset key="titleEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
+                            <state key="normal" title="Exchange">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
                             <connections>
                                 <action selector="handleExchangeButton:" destination="-1" eventType="touchUpInside" id="Nal-Je-A3l"/>
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WuH-jE-Cex">
-                            <rect key="frame" x="209" y="48.666666666666686" width="109" height="3"/>
+                            <rect key="frame" x="256.66666666666669" y="48.666666666666686" width="61.333333333333314" height="3"/>
                             <color key="backgroundColor" red="0.4431372549" green="0.36470588240000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="3" id="3em-Ek-gCd"/>
@@ -130,11 +134,11 @@
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="WuH-jE-Cex" secondAttribute="trailing" constant="15" id="3et-E1-THZ"/>
                         <constraint firstItem="r2T-bQ-nKN" firstAttribute="leading" secondItem="C5O-Da-xiW" secondAttribute="leading" constant="15" id="4oC-Mh-CWJ"/>
-                        <constraint firstItem="RVG-kM-2C7" firstAttribute="leading" secondItem="r2T-bQ-nKN" secondAttribute="trailing" constant="20" id="D7u-al-GAD"/>
+                        <constraint firstItem="RVG-kM-2C7" firstAttribute="leading" secondItem="r2T-bQ-nKN" secondAttribute="trailing" constant="30" id="D7u-al-GAD"/>
                         <constraint firstItem="RVG-kM-2C7" firstAttribute="centerY" secondItem="C5O-Da-xiW" secondAttribute="centerY" id="EQz-GU-CvY"/>
                         <constraint firstItem="RVG-kM-2C7" firstAttribute="centerX" secondItem="C5O-Da-xiW" secondAttribute="centerX" id="Sy6-x1-6og"/>
                         <constraint firstItem="WuH-jE-Cex" firstAttribute="centerY" secondItem="C5O-Da-xiW" secondAttribute="centerY" id="arI-id-yqd"/>
-                        <constraint firstItem="WuH-jE-Cex" firstAttribute="leading" secondItem="RVG-kM-2C7" secondAttribute="trailing" constant="20" id="fuv-ZN-yTc"/>
+                        <constraint firstItem="WuH-jE-Cex" firstAttribute="leading" secondItem="RVG-kM-2C7" secondAttribute="trailing" constant="30" id="fuv-ZN-yTc"/>
                         <constraint firstItem="r2T-bQ-nKN" firstAttribute="centerY" secondItem="C5O-Da-xiW" secondAttribute="centerY" id="sXb-oh-1cI"/>
                         <constraint firstAttribute="height" constant="100" id="zVw-rw-INO"/>
                     </constraints>
@@ -203,7 +207,6 @@
         </view>
     </objects>
     <resources>
-        <image name="exchanging" width="512" height="512"/>
         <image name="logo" width="571" height="437"/>
     </resources>
 </document>
