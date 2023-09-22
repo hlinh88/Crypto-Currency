@@ -46,18 +46,12 @@ final class HomeViewController: UIViewController {
         let orderBy = matchIdWithOrderBy(categoryId: categoryId)
         let queue = DispatchQueue(label: "getCoinRankingQueue", qos: .utility)
         queue.async { [unowned self] in
-            APIManager.shared.fetchCoinRanking(orderBy: orderBy, completion: { (coinsList: [Coin]) in
+            APIManager.shared.fetchCoinRanking(orderBy: orderBy, completion: { (coins: [Coin]) in
                 self.coins = []
-                _ = coinsList.map { coin in
-                    self.coins.append(Coin(uuid: coin.uuid,
-                                           symbol: coin.symbol,
-                                           name: coin.name,
-                                           color: coin.color,
-                                           iconUrl: coin.iconUrl,
-                                           price: coin.price,
-                                           change: coin.change))
+                self.coins = coins
+                DispatchQueue.main.async { [unowned self] in
+                    self.stockTableView.reloadData()
                 }
-                self.stockTableView.reloadData()
             }, errorHandler: {
                 self.popUpErrorAlert(message: "Error fetching API")
             })
@@ -67,18 +61,12 @@ final class HomeViewController: UIViewController {
     private func loadMoreCoins() {
         let queue = DispatchQueue(label: "loadMoreQueue", qos: .utility)
         queue.async { [unowned self] in
-            APIManager.shared.fetchLoadMoreCoin(loadMore: String(defaultLoad), completion: { (coinsList: [Coin]) in
+            APIManager.shared.fetchLoadMoreCoin(loadMore: String(defaultLoad), completion: { (coins: [Coin]) in
                 self.coins = []
-                _ = coinsList.map { coin in
-                    self.coins.append(Coin(uuid: coin.uuid,
-                                           symbol: coin.symbol,
-                                           name: coin.name,
-                                           color: coin.color,
-                                           iconUrl: coin.iconUrl,
-                                           price: coin.price,
-                                           change: coin.change))
+                self.coins = coins
+                DispatchQueue.main.async { [unowned self] in
+                    self.stockTableView.reloadData()
                 }
-                self.stockTableView.reloadData()
             }, errorHandler: {
                 self.popUpErrorAlert(message: "Error fetching API")
             })
@@ -156,7 +144,8 @@ final class HomeViewController: UIViewController {
         }
     }
 
-    @objc private func refresh(_ sender: AnyObject) {
+    @objc 
+    private func refresh(_ sender: AnyObject) {
         getCoinRanking(categoryId: categoryId)
         refreshControl.endRefreshing()
     }
